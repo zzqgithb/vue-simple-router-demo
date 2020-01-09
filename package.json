@@ -1,8 +1,10 @@
 {
-  "name": "my-project",
+  "name": "je-paas-app4",
+  "author": "Ziqin Zhai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "lint": "vue-cli-service lint",
     "serve": "npm run dev:h5",
     "build": "npm run build:h5",
     "build:app-plus": "cross-env NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
@@ -24,6 +26,7 @@
     "info": "node node_modules/@dcloudio/vue-cli-plugin-uni/commands/info.js"
   },
   "dependencies": {
+    "@dcloudio/uni-ui":"^1.1.3",
     "@dcloudio/uni-app-plus": "^2.0.0-25120200103006",
     "@dcloudio/uni-h5": "^2.0.0-25120200103006",
     "@dcloudio/uni-helper-json": "*",
@@ -41,6 +44,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "eslint": "^5.1.0",
     "@babel/plugin-syntax-typescript": "^7.2.0",
     "@dcloudio/types": "*",
     "@dcloudio/uni-cli-shared": "^2.0.0-25120200103006",
@@ -54,7 +58,15 @@
     "@vue/cli-plugin-babel": "3.5.1",
     "@vue/cli-plugin-typescript": "^3.5.1",
     "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-prettier":"^6.0.0",
+    "@vue/eslint-config-typescript": "^4.0.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-config-prettier": "^6.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
     "babel-plugin-import": "^1.11.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "prettier": "^1.19.1",
     "postcss-comment": "^2.0.0",
     "typescript": "^3.0.0",
     "vue-template-compiler": "^2.6.10"
@@ -63,6 +75,60 @@
     "Android >= 4",
     "ios >= 8"
   ],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier",
+      "@vue/typescript"
+    ],
+    "rules": {
+      "semi": ["error", "always"],
+      "comma-dangle": ["error", "always-multiline"],
+      "import/no-unresolved": 0,
+      "import/no-extraneous-dependencies": 0,
+      "import/no-named-as-default-member": 0,
+      "no-var": "error",
+      "prefer-spread": 0,
+      "no-restricted-syntax": 0,
+      "no-prototype-builtins": 0,
+      "no-extend-native": 0,
+      "no-underscore-dangle": 0,
+      "no-bitwise": 0,
+      "no-mixed-operators": 0,
+      "no-eval": 0,
+      "no-plusplus": 0,
+      "no-case-declarations": 0,
+      "no-useless-escape": 0,
+      "no-param-reassign": 0,
+      "guard-for-in": 0,
+      "max-len": [2, { "code": 200 }],
+      "no-unused-expressions": 0,
+      "global-require": 0,
+      "no-multi-assign": 0,
+      "prefer-rest-params": 0,
+      "consistent-return": 0,
+      "class-methods-use-this": 0,
+      "linebreak-style": [0, "error", "windows"]
+    },
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  },
   "uni-app": {
     "scripts": {}
   }
