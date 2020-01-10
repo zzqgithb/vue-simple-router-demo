@@ -4,19 +4,14 @@
     <view>
       <text class="title">{{ title }}</text>
     </view>
-
-    <uni-drawer :visible="true">
-      <view style="padding:30rpx;">
-        <view class="uni-title">抽屉式导航</view>
-      </view>
-    </uni-drawer>
+    <button type="default" @click="jumpPlugin">跳转到插件</button>
   </view>
 </template>
 
 <script lang="ts">
-import uniDrawer from "@dcloudio/uni-ui";
 import { Component } from "vue-property-decorator";
 import Vue from "vue";
+import TestComp from "./test.vue";
 
 interface Test {
   readonly title: string;
@@ -24,19 +19,22 @@ interface Test {
 @Component({
   data: (): Test => {
     return {
-      title: "123",
+      title: "123"
     };
+  },
+  components: {
+    TestComp
   }
 })
 export default class Index extends Vue {
-  component: { uniDrawer: uniDrawer };
-  mounted() {
-    console.log(this);
+  mounted() {}
+  jumpPlugin() {
+    uni.navigateTo({
+      url: "/pages/plugin/index",
+    });
   }
-  replaceInput() {}
 }
 </script>
-
 <style>
 .content {
   text-align: center;
