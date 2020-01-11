@@ -6,10 +6,10 @@
 				"navigationBarTitleText": "uni-app"
 			}
 		}
-	    ,{
-            "path" : "pages/plugin/index",
-            "style" : {}
-        }
+		,{
+			"path" : "pages/plugin/index",
+			"style" : {}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

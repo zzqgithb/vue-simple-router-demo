@@ -8,7 +8,7 @@
  **/
 interface IParse {
   name: string;
-  pluginUrl: string;
+  pluginUrls: string[];
   tempBlob?: string;
 
   initPlugin: () => void;
@@ -21,6 +21,6 @@ interface IParseStatic {
    * 下载插件代码
    * @param pluginUrl
    */
-  download: (pluginUrl: string) => Promise<string>;
+  download: (pluginUrls: string[]) => Promise<string>;
 }
 export { IParse, IParseStatic };

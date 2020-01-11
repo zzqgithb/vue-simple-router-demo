@@ -11,7 +11,6 @@
 <script lang="ts">
 import { Component } from "vue-property-decorator";
 import Vue from "vue";
-import TestComp from "./test.vue";
 
 interface Test {
   readonly title: string;
@@ -22,12 +21,11 @@ interface Test {
       title: "123"
     };
   },
-  components: {
-    TestComp
-  }
+  components: {}
 })
 export default class Index extends Vue {
-  mounted() {}
+  mounted() {
+  }
   jumpPlugin() {
     uni.navigateTo({
       url: "/pages/plugin/index",
