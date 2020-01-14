@@ -10,11 +10,17 @@
 			"path" : "pages/plugin/index",
 			"style" : {}
 		}
+        ,{
+            "path" : "pages/webview/webview",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#536dfe",
 		"backgroundColor": "#F8F8F8"
 	}
 }

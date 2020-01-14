@@ -1,4 +1,5 @@
 <script lang="ts">
+import { Component } from "vue-property-decorator";
 import Vue from "vue";
 export default Vue.extend({
   mpType: "app",

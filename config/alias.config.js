@@ -14,12 +14,12 @@ function resolve(dir) {
 
 // 配置路径别名
 const aliasConfig = {
-  "@": resolve("../src"),
-  "@je": resolve("../src/je"),
-  components: resolve("../components"),
-  assets: resolve("../assets"),
-  utils: resolve("../utils"),
-  views: resolve("../view"),
+  // "@": resolve("../src"),
+  // "@je": resolve("../src/je"),
+  // components: resolve("../components"),
+  // assets: resolve("../assets"),
+  // utils: resolve("../utils"),
+  // views: resolve("../view"),
 };
 // 提供一个供vueconfig使用的别名表
 const aliasForVue = webpackChain => {

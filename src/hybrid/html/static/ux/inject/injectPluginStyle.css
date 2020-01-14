@@ -1,0 +1,29 @@
+/* 
+ *   注入到插件中的CSS
+ *   处理引入的插件没有沉浸式问题
+*/
+
+.header-blue {
+	height: auto !important;
+}
+body{
+	background-color: #ffffff !important;
+}
+/* .mui-bar-nav ~ .mui-content {
+	padding-top: 44px !important;
+}
+.mui-bar-nav ~ .mui-content .mui-slider.mui-fullscreen {
+	top: 44px;
+} */
+.header-blue .mui-action-back {
+	height: 44px;
+}
+.header-blue:not(.not-home-page) .mui-action-back:before {
+	display: none;
+}
+/* 
+	审批页面下方border
+*/
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item{
+	border-bottom: none;
+}

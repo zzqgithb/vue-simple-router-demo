@@ -7,6 +7,11 @@
  * @Description 头文件入口
  **/
 interface Window {
-  default: any;
-  plus: any;
+  [key: string]: any;
+}
+
+declare module GlobalThis {
+  interface globalThis {
+    [key: string]: any;
+  }
 }
