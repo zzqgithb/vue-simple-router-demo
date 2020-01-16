@@ -28,9 +28,10 @@ export default class Index extends Vue {
   mounted() {}
   jumpPlugin() {
     uni.navigateTo({
-      url: "/pages/plugin/index",
+      url: "/pages/test/test",
     });
   }
+
   jumpWebview() {
     uni.navigateTo({
       url: "/pages/webview/webview",

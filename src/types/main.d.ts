@@ -6,6 +6,7 @@
  * @Last Modifined time : 2020/1/11 15:30
  * @Description 头文件入口
  **/
+declare module "*.js";
 interface Window {
   [key: string]: any;
 }

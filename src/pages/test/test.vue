@@ -1,21 +1,16 @@
 <template>
   <view class="content">
-    {{ test }}
-    <testComponent></testComponent>
+    123
   </view>
 </template>
 
-<script type="text/ecmascript-6">
-  import testComponent from "./testComponent.vue";
-export default {
-  components:{
-    testComponent,
-  },
-  data(){
-    return{
-      test:123,
-    };
-  },
-};
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+@Component({})
+export default class Test extends Vue {
+  created() {
+    console.log(123);
+  }
+}
 </script>
 <style></style>
