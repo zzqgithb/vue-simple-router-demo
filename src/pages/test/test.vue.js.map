@@ -1,1 +1,1 @@
-{"version":3,"file":"test.vue.js","sourceRoot":"","sources":["test.vue"],"names":[],"mappings":"AAOA,OAAO,EAAa,GAAG,EAAE,MAAM,wBAAwB,CAAC;AACxD,MAAM,CAAC,OAAO,OAAO,IAAK,SAAQ,GAAG;CAEpC"}
+{"version":3,"file":"test.vue.js","sourceRoot":"","sources":["test.vue"],"names":[],"mappings":";AAOA,OAAO,EAAE,SAAS,EAAE,GAAG,EAAE,MAAM,wBAAwB,CAAC;AACxD,OAAO,cAAc,MAAM,wCAAwC,CAAC;AAEpE,IAAqB,IAAI,GAAzB,MAAqB,IAAK,SAAQ,GAAG;IACnC,OAAO;QACL,IAAI,cAAc,EAAE,CAAC;IACvB,CAAC;CACF,CAAA;AAJoB,IAAI;IADxB,SAAS,CAAC,EAAE,CAAC;GACO,IAAI,CAIxB;eAJoB,IAAI"}

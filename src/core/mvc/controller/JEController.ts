@@ -55,7 +55,7 @@ export default class JEController {
    * 创建模型对象
    * @param model 模型类
    */
-  createModel(ModelCons: JEModelStatic, options: JEModel) {
+  createModel(ModelCons: JEModelStatic, options: any) {
     if (!(ModelCons.prototype instanceof JEController)) {
       throw new Error("模型参数异常");
     }

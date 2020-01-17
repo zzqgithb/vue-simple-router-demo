@@ -150,6 +150,9 @@ export default class JEModel {
     return SubModel;
   }
 }
+/**
+ * 继承方法
+ */
 const SubModel = extendFrom(JEModel, function(value, vm) {
   Object.assign(this, value);
 });

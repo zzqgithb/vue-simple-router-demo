@@ -183,6 +183,9 @@ export default class JEModel {
   }
 }
 
+/**
+ * 继承方法
+ */
 const SubModel = extendFrom(JEModel, function(this: any, value: any, vm: Vue) {
   Object.assign(this, value);
 });

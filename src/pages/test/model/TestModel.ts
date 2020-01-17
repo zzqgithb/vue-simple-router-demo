@@ -7,8 +7,11 @@
  * @Description
  **/
 import JEModel from "@/core/mvc/model/JEModel";
+import { ObserveKey } from "@/core/mvc/model/modelDecorator";
 
 export default class TestModel extends JEModel {
+  @ObserveKey()
+  testValue: string = "1";
   constructor(params: any) {
     super(params);
   }

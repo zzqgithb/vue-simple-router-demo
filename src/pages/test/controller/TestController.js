@@ -7,9 +7,13 @@
  * @Description
  **/
 import JEController from "@/core/mvc/controller/JEController";
+import TestModel from "@/pages/test/model/TestModel";
 export default class TestController extends JEController {
     constructor() {
         super();
+    }
+    init() {
+        this.createModel(TestModel, {});
     }
 }
 //# sourceMappingURL=TestController.js.map

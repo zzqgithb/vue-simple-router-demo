@@ -6,10 +6,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import TestController from "@/pages/test/controller/TestController";
 @Component({})
 export default class Test extends Vue {
   created() {
-    console.log(123);
+    new TestController();
   }
 }
 </script>
