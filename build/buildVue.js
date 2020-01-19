@@ -14,8 +14,9 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const config = {
   entry: "../src/pages/test/test.js",
   output: {
-    libraryTarget: "umd",
-    filename: "123.js",
+    library: "components",
+    libraryTarget: "this",
+    filename: "components.js",
   },
   mode: "development",
   devtool: "cheap-module-source-map",

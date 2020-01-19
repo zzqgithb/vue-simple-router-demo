@@ -22,7 +22,7 @@ export default class Parse implements IParse {
    * 初始化组件
    */
   initPlugin(): void {
-    window.eval(<string>this.tempBlob);
+    (globalThis).eval.call(this, <string>this.tempBlob);
   }
 
   /**
@@ -50,8 +50,8 @@ export default class Parse implements IParse {
    * @param func
    */
   static downloadFiles(url: string): Promise<string> {
+    url = url.replace("dev", "dev");
     return new Promise<any>(resolve => {
-      // #ifdef H5
       uni.request({
         url,
         success(res) {
@@ -60,31 +60,23 @@ export default class Parse implements IParse {
           }
         }
       });
-      // #endif
-      // #ifndef H5
-      url = url.replace("dev", "http://dev.suanbanyun.com");
-      uni.downloadFile({
-        url,
-        success(res) {
-          console.log(res);
-          if (res.statusCode === 200) {
-            // 读取资源文件
-            plus.io.resolveLocalFileSystemURL(res.tempFilePath, file => {
-              // 读取文本
-              if (plus) {
-                // TODO 定义全局变量
-                const reader = new plus.io.FileReader();
-                reader.onloadend = (e: any) => {
-                  resolve("123");
-                };
-                reader.readAsText(file);
-              }
-            });
-            resolve(res.tempFilePath);
-          }
-        }
-      });
-      // #endif
+      // uni.downloadFile({
+      //   url,
+      //   success(res) {
+      //     if (res.statusCode === 200) {
+      //       // 读取资源文件
+      //       plus.io.resolveLocalFileSystemURL(res.tempFilePath, file => {
+      //         // 读取文本
+      //         // TODO 定义全局变量
+      //         const reader = new plus.io.FileReader();
+      //         reader.onloadend = (e: any) => {
+      //           resolve(e.target.result);
+      //         };
+      //         reader.readAsText(file);
+      //       });
+      //     }
+      //   }
+      // });
     });
   }
 

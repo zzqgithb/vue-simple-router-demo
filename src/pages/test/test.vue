@@ -1,18 +1,17 @@
 <template>
   <view class="content">
-    {{ test }}
+    {{ testCtrl.testModel.testValue }}
   </view>
 </template>
 
-<script type="text/ecmascript-6">
-export default {
-  components:{
-  },
-  data(){
-    return{
-      test:123,
-    };
-  },
-};
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import TestController from "@/pages/test/controller/TestController";
+@Component({})
+export default class Test extends Vue {
+  created() {
+    window.test = this.testCtrl = this.$createCtrl(TestController);
+  }
+}
 </script>
 <style></style>

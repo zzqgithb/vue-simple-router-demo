@@ -1,0 +1,886 @@
+/************************************       变量相关      ************************************/
+/* 弹窗全局样式 */
+.win-modal {
+  font-size: 15px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.7);
+  box-sizing: border-box;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 头部样式 */
+.win-modal .win-header {
+  position: absolute;
+  top: 0;
+  height: 44px;
+  left: 0;
+  width: 100%;
+  background-color: #536DFE;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.win-modal .win-header .multiple-checkbox {
+  width: 30px;
+  height: 30px;
+}
+.win-modal .win-header .multiple-checkbox .multiple-circle {
+  top: 0;
+  left: 15px;
+}
+.win-modal .win-header .multiple-checkbox .multiple-circle::before {
+  color: #fff;
+}
+.win-modal .win-header .searchIcon {
+  color: #fff;
+  padding: 0 15px;
+  font-size: 15px;
+}
+.win-modal .win-header .mui-input-row {
+  flex: 1;
+  padding-left: 15px;
+  font-size: 14px;
+  color: #333;
+}
+.win-modal .win-header .mui-search .mui-placeholder .mui-icon {
+  color: #999;
+}
+.win-modal .win-header .mui-input-clear ~ .mui-icon-clear {
+  top: 7px !important;
+}
+.win-modal .win-header .mui-search.mui-active:before {
+  left: 20px;
+  margin-top: -10px;
+  color: #999;
+}
+.win-modal .win-header .mui-input-row input {
+  margin-bottom: 2px;
+  background-color: #fff;
+  border-radius: 30px;
+}
+/* 内容样式 */
+.win-modal .main-content {
+  position: absolute;
+  bottom: 44px;
+  top: 44px;
+  left: 0;
+  right: 0;
+  font-size: 15px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  /*这句是为了滑动更顺畅*/
+}
+.win-modal .main-content .mui-table-view:before,
+.win-modal .main-content .mui-table-view:after {
+  height: 0;
+}
+.win-modal .main-content .mui-table-view {
+  min-height: 350px;
+}
+.win-modal .main-content .mui-table-view .mui-table-view-cell:after {
+  left: 0;
+  background-color: #eeedf1;
+}
+.win-modal .main-content .mui-table-view .mui-table-view-cell:last-child:after {
+  height: 1px;
+}
+.win-modal .main-content .mui-table-view .mui-checkbox.mui-left input[type=checkbox] {
+  left: 16px;
+  top: 50%;
+  margin-top: -13px;
+}
+.win-modal .main-content .mui-table-view .mui-table-view-cell .deleteIcon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -10px;
+  font-size: 16px;
+  color: #f83e3e;
+}
+.win-modal .main-content .el-tree-node__content {
+  height: 50px;
+}
+.win-modal .main-content .el-tree-node__content .el-tree-node__expand-icon {
+  font-size: 16px;
+}
+.win-modal .main-content .el-tree-node__content:hover {
+  background-color: initial;
+}
+.win-modal .main-content .el-checkbox__inner {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+.win-modal .main-content .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
+  top: 8px;
+}
+.win-modal .main-content .el-checkbox__input.is-checked .el-checkbox__inner::after {
+  left: 6px;
+  top: 2px;
+  height: 9px;
+  width: 5px;
+}
+.win-modal .main-content .custom-tree-node {
+  display: flex;
+  align-items: center;
+}
+.win-modal .main-content .custom-tree-node .userName {
+  padding-left: 4px;
+  font-size: 15px;
+}
+.win-modal .main-content .custom-tree-node .headerImg {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #FFA03E;
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  font-size: 12px;
+  overflow: hidden;
+  margin-right: 5px;
+}
+.win-modal .main-content .custom-tree-node .headerImg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.win-modal .main-content .el-tree-node__content > .el-checkbox {
+  margin-left: 4px;
+  padding-top: 2px;
+}
+.win-modal .main-content .el-checkbox__input.is-checked .el-checkbox__inner,
+.win-modal .main-content .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: #F7821B;
+  border-color: #F7821B;
+}
+.winActive {
+  background-color: #eee;
+}
+.noDatas {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  left: 0;
+  margin-top: -20px;
+  text-align: center;
+  font-size: 20px;
+  color: #bebebe;
+}
+/* 底部样式 */
+.win-modal .win-footer {
+  position: absolute;
+  bottom: 0;
+  height: 44px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+.win-modal .win-footer .mui-btn {
+  width: 50%;
+  height: 100%;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+}
+.win-modal .win-footer .rightBtn {
+  color: #ffffff;
+}
+/* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓actionsheet↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+.page_actionsheet {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.3);
+}
+.list_wrp {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+}
+.list_wrp .list_content {
+  max-height: 80vh;
+  overflow: hidden;
+  overflow-y: auto;
+  background: #f7f7f7;
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+  margin: 8px;
+  border-radius: 8px;
+}
+.list_wrp .list_content::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.list_wrp .list_content .items {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18.5px;
+  color: #007AFF;
+}
+.list_wrp .list_content .items:not(:last-child) {
+  border-bottom: 1px solid rgba(214, 214, 219, 0.5);
+}
+/* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+/* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓win↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+.je_win_modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+}
+.je_win_modal .mask-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(7, 17, 27, 0.8);
+}
+.je_win_modal .content__wrp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  width: 96%;
+}
+.je_win_modal .content__wrp .content_header {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #536dfe;
+  color: #ffffff;
+  font-size: 18px;
+}
+.je_win_modal .content__wrp .content_header .close-btn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+}
+.je_win_modal .content__wrp .win_modal_content {
+  background: #ffffff;
+  padding: 10px;
+  padding: 5px 10px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  min-height: 10vh;
+  max-height: 80vh;
+}
+.je_win_modal .content__wrp .win_modal_content::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.je_win_modal .content__wrp .win_modal_content .items {
+  height: 44px;
+  line-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.je_win_modal .content__wrp .win_modal_content .items .label {
+  width: 120px;
+  font-size: 18px;
+}
+.je_win_modal .content__wrp .win_modal_content input {
+  border: 0;
+  margin: 0;
+  flex: 1;
+}
+.je_win_modal .content__wrp .win_modal_content .items:not(:last-child) {
+  border-bottom: 1px solid #999999;
+}
+.je_win_modal .content__wrp .footer {
+  border-top: 1px solid #999999;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+}
+.je_win_modal .content__wrp .footer .btn {
+  border: 1px solid #999999;
+  padding: 5px 10px;
+  background: #ffffff;
+  border-radius: 4px;
+}
+.je_win_modal .content__wrp .footer .btn.sure {
+  color: #ffffff;
+  background: #536dfe;
+  border-color: #536dfe;
+}
+/* 显示隐藏 */
+.win_slidebottom-enter-active {
+  opacity: 1;
+  transition: all 2s linear;
+}
+.win_slidebottom-leave-active {
+  opacity: 1;
+  transition: all 0.3s linear;
+}
+.win_slidebottom-enter,
+.win_slidebottom-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+/* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+/*--------------winCRGroup开始------------------*/
+.Win-winCRGroup {
+  z-index: 10000;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  top: auto !important;
+}
+.Win-winCRGroup-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(43, 43, 43, 0.3);
+  z-index: 9999;
+}
+.Win-winCRGroup .mui-table-view {
+  margin: 8px;
+  text-align: center;
+  color: #007aff;
+  border-radius: 4px;
+  width: auto;
+  max-height: 430px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.Win-winCRGroup .mui-table-view .mui-table-view-cell {
+  font-size: 18px;
+  padding: 0;
+}
+.Win-winCRGroup .mui-table-view .mui-table-view-cell:after {
+  left: 0;
+}
+.Win-winCRGroup .mui-table-view .mui-table-view-cell .mui-input-row {
+  text-align: left;
+  font-size: 18px;
+  padding: 11px 15px;
+}
+.Win-winCRGroup .mui-table-view .mui-table-view-cell .mui-checkbox.mui-left input[type=checkbox],
+.mui-radio.mui-left input[type=radio] {
+  left: 20px;
+  top: 1px;
+}
+.Win-winCRGroup .mui-table-view .mui-table-view-cell .mui-input-row label {
+  padding: 0;
+  padding-right: 15px;
+  padding-left: 40px;
+}
+.mui-table-view::-webkit-scrollbar {
+  display: none;
+  /* 不显示滚动条 */
+}
+.Win-winCRGroup .mui-table-view:after {
+  height: 0;
+}
+/*--------------winCRGroup结束------------------*/
+/*--------------全局样式------------------*/
+/* * {
+	touch-action: none;
+} */
+/*--------------蓝色头部------------------*/
+.header-blue {
+  background-color: #536DFE;
+}
+.mui-btn-blue,
+.mui-btn-primary,
+input[type=submit] {
+  border-color: #536DFE !important;
+  background-color: #536DFE !important;
+}
+.mui-bar-nav {
+  top: -1px;
+}
+.header-blue .mui-icon,
+.header-blue .mui-title,
+.header-blue .mui-btn-link {
+  color: #ffffff;
+}
+.mui-title {
+  font-size: 18px;
+}
+.header-blue .mui-icon-clear {
+  color: #cecece !important;
+}
+.header-blue .mui-icon {
+  font-size: 20px;
+  line-height: 44px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/*--------------输入提示颜色---------------*/
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #cecece;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #cecece;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #cecece;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #cecece;
+}
+/*多选按钮*/
+/*.mui-checkbox input[type=checkbox]:before{
+	font-family: FontAwesome;
+	content: "\f096";
+}
+.mui-checkbox input[type=checkbox]:checked:before {
+    content:"\f046";
+    color: rgb(0, 122, 255);
+}*/
+.mui-table-view-cell.mui-checkbox.mui-left,
+.mui-table-view-cell.mui-radio.mui-left {
+  padding-left: 48px;
+}
+.mui-radio input[type=radio],
+.mui-checkbox input[type=checkbox] {
+  line-height: 26px;
+}
+.mui-radio input[type=radio]:before,
+.mui-checkbox input[type=checkbox]:before {
+  font-family: jeicon;
+  content: "\E66A";
+  font-size: 18px;
+  vertical-align: middle;
+}
+.mui-radio input[type=radio]:checked:before {
+  content: "\E69B";
+}
+.mui-checkbox input[type=checkbox]:checked:before {
+  content: "\E74D";
+}
+/*----------------------底部悬浮按钮----------------------*/
+.je-fixed-button {
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 40px;
+  bottom: 80px;
+  text-align: center;
+  background-color: #536dfe;
+  color: #ffffff;
+  border-radius: 30px;
+  line-height: 50px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.je-fixed-button:active {
+  background: #3C56E3;
+}
+/*----------------------底部分页信息----------------------*/
+.je-list-pagetext {
+  text-align: center;
+  padding: 10px;
+  color: #536dfe;
+}
+.je-list-pagetext.text-disable {
+  color: #8f8f94;
+}
+/*----------------------子功能返回按钮----------------------*/
+header .mui-action-back .parenttitle {
+  font-size: 10px;
+  position: absolute;
+  width: 60px;
+  top: 17px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 14px;
+}
+/*----------------------查询选择----------------------*/
+/*主体*/
+.je-selectwin {
+  height: 100%;
+}
+.je-selectwin .mui-card {
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: transparent;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+}
+.je-selectwin .mui-card-content {
+  position: absolute;
+  bottom: 44px;
+  top: 44px;
+  left: 0px;
+  right: 0px;
+  background-color: #ffffff;
+  border-radius: 0px;
+}
+.je-selectwin .mui-slider .mui-slider-group {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border-width: 0px;
+}
+.je-selectwin .mui-slider .mui-slider-group .mui-slider-item {
+  border-width: 0px !important;
+}
+.je-selectwin .mui-slider .mui-table-view {
+  margin: 0px;
+  background-color: #ffffff;
+  text-align: left !important;
+  color: inherit !important;
+  border-radius: 0px;
+}
+/*多选*/
+.je-selectwin.multiple .mui-slider .mui-slider-group {
+  top: 38px;
+}
+.je-selectwin .mui-card-header .search-icon {
+  right: 7px;
+  position: absolute;
+  top: 0px;
+}
+.je-selectwin .mui-card-header .mui-icon-closeempty {
+  right: 35px;
+  position: absolute;
+  top: 0px;
+  color: #ffffff !important;
+  display: none;
+  padding: 4px;
+}
+/*底部按钮*/
+.je-selectwin .mui-card .mui-card-header:after,
+.je-selectwin .mui-card .mui-card-footer:before {
+  height: 0px;
+}
+.je-selectwin .mui-card .mui-card-footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 0px;
+  border-radius: 5px 5px 0 0;
+  min-height: 44px;
+}
+.je-selectwin .mui-card .mui-card-footer .mui-btn {
+  margin-bottom: 0px;
+  margin: 0px;
+  font-size: 14px;
+  border-radius: 0px;
+  border-width: 0px;
+  border-top-width: 1px;
+  padding: 12px 0;
+}
+/*头部信息*/
+.je-selectwin .mui-card .mui-card-header {
+  padding: 0px 5px;
+  border-radius: 5px 5px 0 0;
+}
+.je-selectwin .mui-card .mui-card-header .mui-title {
+  margin: 0px;
+  left: 40px;
+  right: 35px;
+  width: auto;
+  position: absolute;
+  top: 0px;
+}
+.je-selectwin.multiple .mui-card .mui-card-header .mui-title {
+  /*left: 40px;
+    right: 35px;*/
+}
+.je-selectwin .mui-card .mui-card-header input[type=search] {
+  margin: 0px;
+  height: 30px;
+  color: #666;
+  background-color: #fff;
+  text-align: left;
+  /*background-color: transparent;*/
+}
+/*多选标签*/
+.je-selectwin .mui-slider .mui-slider-indicator {
+  display: none;
+}
+.je-selectwin .mui-slider .mui-slider-indicator:after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.je-selectwin .mui-slider .mui-slider-indicator .mui-control-item {
+  font-size: 14px;
+}
+.je-selectwin .mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+  border-bottom: 0px solid #536dfe;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+/*多选*/
+.je-selectwin.multiple .mui-slider .mui-slider-indicator {
+  display: inherit;
+}
+/*数据项*/
+.je-selectwin .mui-slider .mui-scroll-wrapper,
+.je-selectwin .mui-slider .mui-table-view .mui-table-view-cell {
+  border-radius: 0px;
+  margin: 0px;
+}
+.je-selectwin .mui-table-view .mui-table-view-cell {
+  padding-left: 15px;
+  min-height: 43px;
+}
+.je-selectwin .mui-table-view .mui-table-view-cell .data-body {
+  position: relative;
+}
+.je-selectwin .mui-table-view .mui-table-view-cell:after {
+  left: 0px !important;
+}
+.je-selectwin .mui-table-view .mui-table-view-cell input[type=checkbox] {
+  left: 10px;
+  top: 8px;
+  display: none;
+}
+.je-selectwin .mui-table-view .mui-table-view-cell input[type=checkbox]:before {
+  font-size: 22px;
+}
+.je-selectwin #je-selectwin-value .mui-table-view-cell .remove {
+  position: absolute;
+  right: 0px;
+  font-size: 18px;
+  padding: 11px;
+  color: #dd524d;
+  top: 50%;
+  margin-top: -22px;
+}
+/*选中样式*/
+.je-selectwin #je-selectwin-data-view .mui-table-view-cell {
+  padding-left: 15px;
+  border-radius: 0;
+}
+.je-selectwin #je-selectwin-data-view .mui-table-view-cell.select {
+  background-color: rgba(0, 122, 255, 0.1);
+}
+.je-selectwin.multiple #je-selectwin-data-view .mui-table-view-cell.select {
+  background-color: #ffffff;
+}
+/*数据项  -- 多选*/
+.je-selectwin.multiple #je-selectwin-data .mui-table-view .mui-table-view-cell {
+  padding-left: 45px;
+}
+.je-selectwin.multiple #je-selectwin-data .mui-table-view .mui-table-view-cell input[type=checkbox] {
+  display: inherit;
+}
+/*确定按钮*/
+/*.je-selectwin .mui-card-footer .ok{
+	display: none;
+}
+.je-selectwin.multiple .mui-card-footer .ok{
+	display: block;
+}*/
+/*树形目录节点*/
+.je-selectwin #je-selectwin-data .mui-table-view-cell .in {
+  position: absolute;
+  right: 0px;
+  font-size: 14px;
+  top: 0px;
+  padding: 14px 14px 14px 60px;
+  color: #bbb;
+  display: none;
+}
+.je-selectwin.tree #je-selectwin-data .mui-table-view-cell.folder .in {
+  display: inherit;
+}
+/*树形路径*/
+.je-selectwin .mui-table-view-cell .tree-node-path {
+  font-size: 10px;
+  line-height: 14px;
+}
+.je-selectwin .je-selectwin-tree-path {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px 10px;
+  line-height: 24px;
+  font-size: 13px;
+  color: #8f8f94;
+}
+.je-selectwin .je-selectwin-tree-path .item {
+  color: #536dfe;
+}
+.je-selectwin.list .je-selectwin-tree-path {
+  display: none;
+}
+.je-selectwin.tree #je-selectwin-data .mui-scroll-wrapper {
+  bottom: 24px;
+}
+.je-selectwin #je-selectwin-data .treepath-up {
+  bottom: 30px;
+}
+.je-selectwin #je-selectwin-data .tree-searchback {
+  display: none;
+  bottom: 30px;
+  right: 50px;
+  /* background-color: #f0ad4e; */
+}
+.je-selectwin #je-selectwin-value-clear {
+  bottom: 30px;
+  /* background-color: #f0ad4e; */
+  position: absolute;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.je-selectwin .mui-slider .mui-slider-group .mui-slider-item.mui-active #je-selectwin-value-clear {
+  display: inherit;
+}
+/*列表分页信息*/
+.je-selectwin #je-selectwin-data .pagetext {
+  text-align: center;
+  padding: 10px;
+  color: #536dfe;
+  margin: 0px;
+}
+.je-selectwin #je-selectwin-data .pagetext.text-disable {
+  color: #8f8f94;
+}
+.je-selectwin.tree #je-selectwin-data .pagetext {
+  display: none;
+}
+/*全选*/
+.je-selectwin .mui-card-header .mui-checkbox.checkall {
+  width: 26px;
+  height: 26px;
+  /*margin-left: 10px;*/
+  display: none;
+  position: absolute;
+  left: 10px;
+  top: 4px;
+}
+.je-selectwin.multiple .mui-card-header .mui-checkbox.checkall {
+  display: inherit;
+}
+.je-selectwin .mui-card-header .mui-checkbox.checkall input[type=checkbox] {
+  left: 0px;
+  width: 22px;
+  height: 22px;
+}
+.je-selectwin .mui-card-header .mui-checkbox.checkall input[type=checkbox]:before {
+  font-size: 22px;
+  color: #ffffff;
+}
+/*人员*/
+.je-selectwin .mui-segmented-control.user-type {
+  display: none;
+  border-radius: 0px;
+  font-size: 14px;
+}
+.je-selectwin.user .mui-segmented-control.user-type {
+  display: inherit;
+}
+.je-selectwin.user #je-selectwin-data .mui-scroll-wrapper {
+  top: 32px;
+}
+.je-selectwin.user .mui-segmented-control.user-type .mui-control-item {
+  line-height: 30px;
+}
+/*----------------------查询选择------end----------------*/
+/*----------------------窗体----------------------*/
+.je-ux-win .title {
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+}
+.je-ux-win .mui-card-content {
+  padding: 10px 0px;
+  font-size: 16px;
+}
+.je-ux-win .mui-input-group .mui-input-row:after {
+  right: 15px;
+}
+.je-ux-win .mui-card-header .closable-icon {
+  visibility: hidden;
+  color: #ffffff;
+}
+.je-ux-win.closable .mui-card-header .closable-icon {
+  visibility: visible;
+}
+.je-ux-win.closable .mui-card-footer {
+  display: none;
+}
+/*----------------------窗体---------end-------------*/
+/*------------------------全局菜单样式--------------------------*/
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+  color: #536dfe;
+}
+.mui-segmented-control.mui-segmented-control-inverted ~ .mui-slider-progress-bar {
+  background-color: #536dfe;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+  color: #a9aba9;
+  font-size: 14px;
+}
+/*------------------------全局菜单样式-------end-------------------*/
+/*加载字体*/
+.je-loading-text {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: bold;
+  font-family: "\9ED1\4F53";
+  text-align: center;
+  background: -webkit-linear-gradient(left, #e6e6e6, #8e8c8c 50%, #e6e6e6);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-size: 200% 100%;
+  animation: masked-animation 1.5s infinite linear;
+}
+@-webkit-keyframes masked-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+

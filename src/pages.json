@@ -5,16 +5,25 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
-		}
-		,{
+		},
+		{
 			"path" : "pages/plugin/index",
 			"style" : {}
+		},
+		{
+            "path" : "pages/webview/webview",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        },
+		{
+			"path" : "pages/test/test"
 		}
     ],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "JEAPP",
+		"navigationBarBackgroundColor": "#536dfe",
+		"backgroundColor": "#ffffff"
 	}
 }

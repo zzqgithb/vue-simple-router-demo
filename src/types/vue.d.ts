@@ -11,6 +11,11 @@ import Vue from "vue";
 declare module "vue/types/vue" {
   interface Vue {
     __proto__: any;
+    _data: {
+      [str: string]: any;
+    };
     $route: any;
+
+    [str: string]: any;
   }
 }

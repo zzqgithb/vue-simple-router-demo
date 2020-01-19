@@ -5,6 +5,7 @@
       <text class="title">{{ title }}</text>
     </view>
     <button type="default" @click="jumpPlugin">跳转到插件</button>
+    <button type="default" @click="jumpWebview">跳转到webview</button>
   </view>
 </template>
 
@@ -24,11 +25,16 @@ interface Test {
   components: {}
 })
 export default class Index extends Vue {
-  mounted() {
-  }
+  mounted() {}
   jumpPlugin() {
     uni.navigateTo({
-      url: "/pages/plugin/index",
+      url: "/pages/test/test",
+    });
+  }
+
+  jumpWebview() {
+    uni.navigateTo({
+      url: "/pages/webview/webview",
     });
   }
 }

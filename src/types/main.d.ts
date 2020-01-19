@@ -6,7 +6,13 @@
  * @Last Modifined time : 2020/1/11 15:30
  * @Description 头文件入口
  **/
+declare module "*.js";
 interface Window {
-  default: any;
-  plus: any;
+  [key: string]: any;
+}
+
+declare module GlobalThis {
+  interface globalThis {
+    [key: string]: any;
+  }
 }

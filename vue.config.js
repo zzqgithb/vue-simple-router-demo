@@ -38,6 +38,9 @@ module.exports = {
   chainWebpack: config => {
     aliasForVue(config);
     mergeLessConfig(config);
+    config.when(process.env.NODE_ENV === "development", config =>
+      config.devtool("cheap-module-source-map\n")
+    );
   },
   // configureWebpack: config => {
   //   if (!dev) {

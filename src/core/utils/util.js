@@ -430,3 +430,14 @@ export function throttle(func, wait) {
     }
   };
 }
+
+/**
+ * 从父类对象继承
+ * @param Parent 父类
+ * @param Sub 子类
+ */
+export function extendFrom(Parent, Sub) {
+  Sub.prototype = Object.create(Parent.prototype);
+  Sub.prototype.constructor = Sub;
+  return Sub;
+}
