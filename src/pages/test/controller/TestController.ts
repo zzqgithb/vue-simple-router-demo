@@ -7,14 +7,15 @@
  * @Description
  **/
 import JEController from "@/core/mvc/controller/JEController";
-import TestModel from "@/pages/test/model/TestModel";
+import TestModel, { TestModelParams } from "@/pages/test/model/TestModel";
 
 export default class TestController extends JEController {
   constructor() {
     super();
+    this.init();
   }
 
   init() {
-    this.createModel(TestModel, {});
+    this.createModel<TestModelParams>(TestModel, { testValue: "1" });
   }
 }

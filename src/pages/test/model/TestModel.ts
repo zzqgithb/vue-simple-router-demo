@@ -7,12 +7,18 @@
  * @Description
  **/
 import JEModel from "@/core/mvc/model/JEModel";
-import { ObserveKey } from "@/core/mvc/model/modelDecorator";
+import { ObserverKey } from "@/core/mvc/model/modelDecorator.ts";
+import IJeModel from "@/core/mvc/model/types/IJeModel";
 
-export default class TestModel extends JEModel {
-  @ObserveKey()
-  testValue: string = "1";
-  constructor(params: any) {
+export type TestModelParams = {
+  testValue: string;
+};
+export default class TestModel extends JEModel implements IJeModel {
+  nameSpace = "testModel";
+  @ObserverKey()
+  testValue: string;
+  constructor(params: TestModelParams) {
     super(params);
+    this.testValue = params.testValue;
   }
 }

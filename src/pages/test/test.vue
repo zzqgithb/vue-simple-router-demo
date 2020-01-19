@@ -1,6 +1,6 @@
 <template>
   <view class="content">
-    123
+    {{ testCtrl.testModel.testValue }}
   </view>
 </template>
 
@@ -10,7 +10,7 @@ import TestController from "@/pages/test/controller/TestController";
 @Component({})
 export default class Test extends Vue {
   created() {
-    new TestController();
+    window.test = this.testCtrl = this.$createCtrl(TestController);
   }
 }
 </script>

@@ -1,4 +1,4 @@
-import { __decorate } from "tslib";
+import { __decorate, __extends } from "tslib";
 /**
  * @Author : ZiQin Zhai
  * @Date : 2020/1/15 18:10
@@ -8,14 +8,19 @@ import { __decorate } from "tslib";
  * @Description
  **/
 import JEModel from "@/core/mvc/model/JEModel";
-import { ObserveKey } from "@/core/mvc/model/modelDecorator";
-export default class TestModel extends JEModel {
-    constructor(params) {
-        super(params);
-        this.testValue = "1";
+import { ObserverKey } from "@/core/mvc/model/modelDecorator.ts";
+var TestModel = /** @class */ (function (_super) {
+    __extends(TestModel, _super);
+    function TestModel(params) {
+        var _this = _super.call(this, params) || this;
+        _this.nameSpace = "testModel";
+        _this.testValue = params.testValue;
+        return _this;
     }
-}
-__decorate([
-    ObserveKey()
-], TestModel.prototype, "testValue", void 0);
+    __decorate([
+        ObserverKey()
+    ], TestModel.prototype, "testValue", void 0);
+    return TestModel;
+}(JEModel));
+export default TestModel;
 //# sourceMappingURL=TestModel.js.map

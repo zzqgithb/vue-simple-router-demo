@@ -9,13 +9,13 @@
 import { isPlainObject } from "@/core/utils/util.js";
 import JEModel, { JEModelStatic } from "@/core/mvc/model/JEModel";
 
+export interface JEControllerStatic {
+  VM: Vue;
+  new (params: any): JEController;
+}
+
 export default class JEController {
   _VM: any = null;
-  __proto__: {
-    VM: Vue | null;
-  } = {
-    VM: null
-  };
   [str: string]: any;
 
   _model: {
@@ -23,8 +23,7 @@ export default class JEController {
   } = {};
 
   constructor() {
-    // 断言一定会有VM对象 此处需要在注解中实现
-    if (this.__proto__ && this.__proto__.VM) {
+    if (this.__proto__.VM) {
       this.setVM(this.__proto__.VM);
     }
   }
@@ -55,20 +54,14 @@ export default class JEController {
    * 创建模型对象
    * @param model 模型类
    */
-  createModel(ModelCons: JEModelStatic, options: any) {
-    if (!(ModelCons.prototype instanceof JEController)) {
+  createModel<T>(ModelCons: JEModelStatic, options: T) {
+    if (!(ModelCons.prototype instanceof JEModel)) {
       throw new Error("模型参数异常");
     }
-    let modelIns: JEModel | null = new ModelCons(options);
+    let modelIns: JEModel = new ModelCons(options);
     let nameSpace = modelIns.getNameSpace();
     if (this.hasModel(nameSpace)) {
       nameSpace = modelIns.rename();
-    }
-    // 防止生成随机数以后还会重复
-    if (this.hasModel(nameSpace)) {
-      // 销毁模型
-      modelIns = null;
-      this.createModel(ModelCons, options);
     }
     this._setModel(nameSpace, modelIns);
     if (modelIns) {

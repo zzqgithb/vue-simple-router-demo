@@ -10,51 +10,21 @@ import Vue from "vue";
 import { extendFrom, isArray, isString } from "@/core/utils/util.js";
 import { proxy } from "@/core/utils/proxy";
 
-interface IJEModelParams {
-  nameSpace: string;
-  option: any;
-}
-
 export interface JEModelStatic {
-  new (options: JEModel): JEModel;
+  new (options: any): JEModel;
 }
 
 export default class JEModel {
-  // 模型命名空间
-  nameSpace: string = "";
+  // 从VM实例中copy回来的值
   _data: {
     [str: string]: any;
   } = {};
-  _observerKeys: string[] = [];
-  // 模型映射前的数据
-  _option: object;
+  // 原始数据
+  _option?: object;
 
   [str: string]: any; // 兼容下面用this[key]取值
-  constructor(params: IJEModelParams) {
-    this._option = params.option;
-    this._afterCreated();
-  }
-
-  /**
-   * 构造函数完成以后执行的操作
-   * @private
-   */
-  _afterCreated(): void {
-    let Timer: any = setTimeout(() => {
-      this._validator();
-      clearTimeout(Timer);
-      Timer = null;
-    }, 18);
-  }
-
-  /**
-   * 验证模型对象是否符合要求
-   * @private
-   */
-  _validator(): void {
-    if (!this.getNameSpace()) {
-      throw new Error("未定义的命名空间,请设置命名空间");
-    }
+  constructor(options: any) {
+    this._option = options;
   }
 
   /**
@@ -64,8 +34,8 @@ export default class JEModel {
     const datas: {
       [str: string]: any;
     } = {};
-    (this.getObserverKey() || []).forEach(key => {
-      datas[key] = this._data[key];
+    (this.getObserverKey() || []).forEach((key: any) => {
+      datas[key] = this[key];
     });
     return datas;
   }
@@ -82,13 +52,15 @@ export default class JEModel {
    * @param [Array || data] 数组或者按,分割的Key
    */
   setObserverKey(keys: string[]) {
-    keys.forEach(key => {
-      if (!this._observerKeys.includes(key)) {
-        // 将属性拷贝到_data中
-        this._data[key] = this[key];
-        this._observerKeys.push(key);
-      }
-    });
+    if (this._data) {
+      keys.forEach(key => {
+        if (!this._observerKeys.includes(key)) {
+          // 将属性拷贝到_data中
+          this._data[key] = this[key];
+          this._observerKeys.push(key);
+        }
+      });
+    }
   }
 
   /**
@@ -131,12 +103,14 @@ export default class JEModel {
     }
     // 已经有重复的model在Vm实例上时候进行提醒
     if (vm.hasOwnProperty(this.getNameSpace())) {
-      console.error(`model类重复，请检查【${this.getNameSpace()}】,${vm.$id}`);
+      throw new Error(
+        `model类重复，请检查【${this.getNameSpace()}】,${vm.$id}`
+      );
     }
     vm[this.getNameSpace()] = vm._data[this.getNameSpace()] = Vue.observable(
       this.getObserverData()
     );
-    this.doWatcher(vm);
+    // this.doWatcher(vm);
     this.createGetterAndSetter(vm);
   }
 
