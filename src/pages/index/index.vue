@@ -22,7 +22,7 @@ interface Test {
       title: "123"
     };
   },
-  components: {}
+  components: {},
 })
 export default class Index extends Vue {
   mounted() {}

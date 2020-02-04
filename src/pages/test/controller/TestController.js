@@ -17,7 +17,9 @@ var TestController = /** @class */ (function (_super) {
         return _this;
     }
     TestController.prototype.init = function () {
-        this.createModel(TestModel, { testValue: "1" });
+        this.createModel(TestModel, {
+            testValue: "1",
+        });
     };
     return TestController;
 }(JEController));

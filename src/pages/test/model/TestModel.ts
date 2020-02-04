@@ -12,13 +12,18 @@ import IJeModel from "@/core/mvc/model/types/IJeModel";
 
 export type TestModelParams = {
   testValue: string;
+  testValue2?: string;
 };
 export default class TestModel extends JEModel implements IJeModel {
   nameSpace = "testModel";
   @ObserverKey()
   testValue: string;
+  @ObserverKey()
+  testValue2?: string;
+  testValue3: string = "3";
   constructor(params: TestModelParams) {
     super(params);
     this.testValue = params.testValue;
+    this.testValue2 = params.testValue2;
   }
 }
