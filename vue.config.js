@@ -8,11 +8,8 @@ const { mergeLessConfig } = require("./config/less.config");
 
 module.exports = {
   filenameHashing: true,
-
-  //   lintOnSave：{ type:Boolean default:true } 问你是否使用eslint
   lintOnSave: true,
   // 如果你想要在生产构建时禁用 eslint-loader，你可以用如下配置
-
   // 是否使用包含运行时编译器的 Vue 构建版本。设置为 true 后你就可以在 Vue 组件中使用 template 选项了，但是这会让你的应用额外增加 10kb 左右。(默认false)
   // runtimeCompiler: false,
 
@@ -71,25 +68,7 @@ module.exports = {
         pathRewrite: {
           "^/api": "",
         },
-      },
-      "/dev": {
-        target: "http://dev.suanbanyun.com",
-        // target: 'http://192.168.21.159:8089',
-        ws: true,
-        changeOrigin: true, // 开启代理：在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样服务端和服务端进行数据的交互就不会有跨域问题
-        pathRewrite: {
-          "^/dev": "",
-        },
-      },
-      "/sc": {
-        target: "https://suanbanyun.com",
-        // target: 'http://192.168.21.159:8089',
-        ws: true,
-        changeOrigin: true, // 开启代理：在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样服务端和服务端进行数据的交互就不会有跨域问题
-        pathRewrite: {
-          "^/sc": "",
-        },
-      },
+      }
     },
   },
 };

@@ -16,6 +16,8 @@ export default class TestController extends JEController {
   }
 
   init() {
-    this.createModel<TestModelParams>(TestModel, { testValue: "1" });
+    this.createModel<TestModelParams>(TestModel, {
+      testValue: "1",
+    });
   }
 }

@@ -14,12 +14,17 @@ var TestModel = /** @class */ (function (_super) {
     function TestModel(params) {
         var _this = _super.call(this, params) || this;
         _this.nameSpace = "testModel";
+        _this.testValue3 = "3";
         _this.testValue = params.testValue;
+        _this.testValue2 = params.testValue2;
         return _this;
     }
     __decorate([
         ObserverKey()
     ], TestModel.prototype, "testValue", void 0);
+    __decorate([
+        ObserverKey()
+    ], TestModel.prototype, "testValue2", void 0);
     return TestModel;
 }(JEModel));
 export default TestModel;
