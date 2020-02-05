@@ -19,11 +19,11 @@ export default class TestModel extends JEModel implements IJeModel {
   @ObserverKey()
   testValue: string;
   @ObserverKey()
-  testValue2?: string;
+  testValue2?: string = "2";
+  @ObserverKey()
   testValue3: string = "3";
   constructor(params: TestModelParams) {
     super(params);
     this.testValue = params.testValue;
-    this.testValue2 = params.testValue2;
   }
 }

@@ -14,6 +14,9 @@ let JEController = /** @class */ (function() {
     this._model = {};
     if (this.__proto__.VM) {
       this.setVM(this.__proto__.VM);
+      Object.defineProperty(this, "_VM", {
+        enumerable: false
+      });
     }
   }
   /**

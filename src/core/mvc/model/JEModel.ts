@@ -110,7 +110,7 @@ export default class JEModel {
     vm[this.getNameSpace()] = vm._data[this.getNameSpace()] = Vue.observable(
       this.getObserverData()
     );
-    // this.doWatcher(vm);
+    this.doWatcher(vm);
     this.createGetterAndSetter(vm);
   }
 
