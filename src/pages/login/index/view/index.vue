@@ -37,6 +37,11 @@ export default {
     methods: {
       loginIn(){
         console.log('ILoginCtrl',ILoginCtrl);
+        // 请求后台
+        // 成功后跳转
+        uni.navigateTo({
+          url: `../../../test/test?params=${Math.random()}`,
+        });
       },
     },
     watch: {},
