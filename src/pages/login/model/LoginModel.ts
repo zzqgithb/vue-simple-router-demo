@@ -13,10 +13,8 @@ import { ILoginModel } from "@/pages/login/index/interface/ILoginModel";
 
 export default class LoginModel extends JEModel implements IJeModel {
   nameSpace = "loginModel";
-  // @ObserverKey()
+  @ObserverKey()
   constructor(params: ILoginModel) {
     super(params);
-    this.params = params;
-    console.log(params)
   }
 }

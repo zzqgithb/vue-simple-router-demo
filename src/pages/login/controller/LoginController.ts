@@ -7,19 +7,21 @@
  * @Description
  **/
 import JEController from "@/core/mvc/controller/JEController";
-import LoginModel, { LoginModelParams } from "@/pages/login/model/LoginModel";
+import LoginModel from "@/pages/login/model/LoginModel";
+import  {ILoginModel}  from "@/pages/login/index/interface/ILoginModel";
+import  ILoginService  from "@/pages/login/index/interface/ILoginCtrl";
 
 export default class LoginController extends JEController {
   constructor() {
     super();
-    this.loginIn(option);
+    this.loginIn();
   }
 
-  init() {
-    this.createModel<LoginModelParams>(LoginModel,option);
-  }
+  // init() {
+  //   this.createModel<LoginModelParams>(LoginModel,{});
+  // }
   loginIn(){
-    console.log('点击登录',this);
-    this.createModel<LoginModelParams>(LoginModel,option);
+    console.log('点击登录',ILoginService);
+    this.createModel<ILoginModel>(LoginModel,{});
   }
 }
