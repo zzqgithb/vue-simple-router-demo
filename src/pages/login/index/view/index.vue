@@ -7,6 +7,7 @@
     <view class="uni-common-mt uni-center">
       <view class="uni-common-mt ">
         <view class="uni-form-item uni-column">
+          <text class="jeicon jeicon-user-o"></text>
           <input
             ref="username"
             class="uni-input"
@@ -113,6 +114,8 @@ export default class Login extends Vue {
     .uni-button-login {
       width: 300px;
       margin: 100px auto;
+      box-shadow: 0 2px 2px 0 rgba(83, 109, 254, 0.44);
+      color: #ffffff;
     }
   }
 }
