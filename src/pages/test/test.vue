@@ -10,12 +10,19 @@
 </template>
 
 <script lang="ts">
+import http from "@/je/utils/ajax";
 import { Component, Vue, Watch } from "vue-property-decorator";
 import TestController from "@/pages/test/controller/TestController";
 @Component({})
 export default class Test extends Vue {
   isShow = false;
   created() {
+    JE.ajax({
+      url: "/je/phone/app/loadApk",
+      data: { apkCode: "2019-0102-1347-8233" }
+    }).then(res => {
+      console.log(res);
+    });
     window.test = this;
     this._testCtrl = this.$createCtrl(TestController);
   }
@@ -27,11 +34,6 @@ export default class Test extends Vue {
   }
   get testCtrl() {
     return this._testCtrl;
-  }
-
-  @Watch("testModel", { immediate: true, deep: true })
-  public onMsgChanged(newValue: string, oldValue: string) {
-    alert(1);
   }
 }
 </script>
