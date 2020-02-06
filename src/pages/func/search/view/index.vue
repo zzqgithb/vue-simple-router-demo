@@ -1,6 +1,6 @@
 <template>
   <view>
-    列表
+    搜索页面
   </view>
 </template>
 
