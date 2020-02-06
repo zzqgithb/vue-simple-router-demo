@@ -16,9 +16,9 @@ type httpRequest =
   | "TRACE"
   | "CONNECT"
   | undefined;
-interface requestConfig {
+export interface requestConfig {
   url: string; // 请求url
-  data: any; // 数据
+  data?: any; // 数据
   header?: object; // 请求头
   method?: httpRequest; //请求类型
   timeout?: number;
@@ -30,9 +30,14 @@ interface requestConfig {
   complete?: (data: any) => any;
 }
 class JeHttp {
-  public baseUrl: string = "/dev";
+  public baseUrl: string = "/api";
   public header?: object;
   private static instance: JeHttp;
+
+  private defaultParams: requestConfig = {
+    url: "",
+    method: "POST",
+  };
 
   /**
    * 创建单例模式的JeHttp
@@ -62,12 +67,34 @@ class JeHttp {
    * @param config
    */
   private beforeRequestFilter(config: requestConfig): requestConfig {
-    console.log(config);
+    config.header = {
+      authorization: "ZCuuDCYmCKSkIkzSP9R",
+      "Platform-Agent": "AppleWebKit/537.36 (KHTML, like Gecko)",
+      "X-Requested-With": "XMLHttpRequest",
+      "Content-Type":
+        config.method === "POST"
+          ? "application/x-www-form-urlencoded; charset=UTF-8"
+          : "application/json; charset=UTF-8",
+    };
     return config;
   }
 
   // 数据返回之后的操作
-  private afterResponseFilter(responseData: any): any {}
+  private afterResponseFilter(response: any): any {
+    const { data, statusCode } = response;
+    if (statusCode === 200) {
+      if (data !== null) {
+        if (data.success === false) {
+          // 用户失效
+          if (data.code == "UNKOWN_LOGINUSER") {
+            alert("用户失效");
+          }
+        }
+      }
+      return data.obj;
+    }
+    return response;
+  }
 
   /**
    * 处理请求前的参数
@@ -79,13 +106,13 @@ class JeHttp {
     if (req.success) {
       const _success = req.success;
       req.success = (data: any): any => {
-        this.afterResponseFilter(data);
+        data = this.afterResponseFilter(data);
         _success(data);
       };
     } else {
       // 通过promise执行
       req.success = (data: any): any => {
-        this.afterResponseFilter(data);
+        data = this.afterResponseFilter(data);
         next(data);
       };
     }
@@ -100,43 +127,51 @@ class JeHttp {
     if (req.fail) {
       const _fail = req.fail;
       req.fail = (e: any): any => {
-        this.afterResponseFilter(e);
         _fail(e);
+        next(e);
       };
     } else {
       req.fail = (e: any): any => {
-        this.afterResponseFilter(e);
         next(e);
       };
     }
   }
 
   /**
+   * 合并请求参数
+   */
+  private mergeConfig(config: requestConfig) {
+    return Object.assign(this.defaultParams, config);
+  }
+
+  /**
    * 处理请求数据
    * @param req
    */
-  private transformRequest(req: requestConfig): void {
+  private transformRequest(req: requestConfig): requestConfig {
     req.url = this.baseUrl + req.url;
+    req = this.mergeConfig(req);
+    return req;
   }
 
   /**
    * 发送请求
    */
-  request(config: requestConfig): Promise<any> {
+  static request(config: requestConfig): Promise<any> {
+    let _this = JeHttp.instance;
     return new Promise(
       (resolve: (data: any) => any, reject: (data: any) => any) => {
-        this.transformRequest(config);
+        config = _this.transformRequest(config);
         // 前置拦截器
-        let req = this.beforeRequestFilter(config);
+        let req = _this.beforeRequestFilter(config);
         // 后置成功拦截器
-        this.transformResponseSuccess(config, resolve);
+        _this.transformResponseSuccess(config, resolve);
         // 后置异常拦截器
-        this.transformResponseFail(config, reject);
+        _this.transformResponseFail(config, reject);
         uni.request(req);
       }
     );
   }
 }
-
 const ajax = JeHttp.create();
-export default ajax.request;
+export default JeHttp;

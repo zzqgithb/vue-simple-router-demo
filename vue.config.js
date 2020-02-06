@@ -2,7 +2,7 @@
 // 官方vue.config.js 参考文档 https://cli.vuejs.org/zh/config/#css-loaderoptions
 // 这里只列一部分，具体配置参考文档
 const dev = process.env.NODE_ENV !== "production";
-const devtool = dev && "source-map";
+const devtool = dev && "cheap-module-eval-source-map";
 const { aliasForVue } = require("./config/alias.config.js");
 const { mergeLessConfig } = require("./config/less.config");
 
@@ -36,7 +36,7 @@ module.exports = {
     aliasForVue(config);
     mergeLessConfig(config);
     config.when(process.env.NODE_ENV === "development", config =>
-      config.devtool("cheap-module-source-map\n")
+      config.devtool("cheap-module-source-map")
     );
   },
   // configureWebpack: config => {

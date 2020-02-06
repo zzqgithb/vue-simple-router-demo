@@ -16,3 +16,7 @@ declare module GlobalThis {
     [key: string]: any;
   }
 }
+
+interface JE {
+  [key: string]: any;
+}
