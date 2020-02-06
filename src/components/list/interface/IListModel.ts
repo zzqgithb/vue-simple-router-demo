@@ -9,6 +9,7 @@
 export type listSqlType = "search" | "parent" | "perm" | "queryStrategy"; // 列表搜索
 
 export interface IListModel {
+  primaryKey: string; // 主键的属性名称
   building: boolean; // 列表是否加载完成
   readonly: boolean; // 是否为只读列表 只读列表不可删除，核心按钮不可以使用
   store: object; // 数据集合
