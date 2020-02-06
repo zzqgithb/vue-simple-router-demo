@@ -14,9 +14,9 @@ var TestModel = /** @class */ (function (_super) {
     function TestModel(params) {
         var _this = _super.call(this, params) || this;
         _this.nameSpace = "testModel";
+        _this.testValue2 = "2";
         _this.testValue3 = "3";
         _this.testValue = params.testValue;
-        _this.testValue2 = params.testValue2;
         return _this;
     }
     __decorate([
@@ -25,6 +25,9 @@ var TestModel = /** @class */ (function (_super) {
     __decorate([
         ObserverKey()
     ], TestModel.prototype, "testValue2", void 0);
+    __decorate([
+        ObserverKey()
+    ], TestModel.prototype, "testValue3", void 0);
     return TestModel;
 }(JEModel));
 export default TestModel;
