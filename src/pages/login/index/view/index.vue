@@ -77,14 +77,14 @@ export default class Login extends Vue {
     };
   }
   created() {
-    this._loginCtrl = this.$createCtrl(LoginController);
   }
   get loginCtrl(){
-    return this._loginCtrl;
+    return this._loginCtrl||{};
   }
   loginIn(){
     // 请求后台
     // 成功后跳转
+    this._loginCtrl = this.$createCtrl(LoginController({username:'11'}));
     return;
     uni.navigateTo({
       url: `../../../test/test?params=${Math.random()}`,

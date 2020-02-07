@@ -14,7 +14,8 @@ import { ILoginModel } from "@/pages/login/index/interface/ILoginModel";
 export default class LoginModel extends JEModel implements IJeModel {
   nameSpace = "loginModel";
   @ObserverKey()
-  constructor(params: ILoginModel) {
+  constructor(public params: ILoginModel) {
     super(params);
+    console.log('此处是login的具体实现')
   }
 }
