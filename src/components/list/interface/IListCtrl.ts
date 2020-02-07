@@ -6,8 +6,6 @@
  * @Last Modifined time : 2020/2/6 10:28
  * @Description 列表控制器接口
  **/
-// 数据的id或者是整条记录
-type dataItem = string | object;
 export default interface IListCtrl {
   // 创建数据集
   createStore: () => void;
@@ -22,7 +20,10 @@ export default interface IListCtrl {
    * 将数据通过render解析到页面
    * @param idOrData id或者是对应的每一条数据
    */
-  render: (idOrData: dataItem) => string;
+  render: (data: object) => string;
+
+  
+  renderById:(id:string) => string;
 
   /**
    * 移除数据
