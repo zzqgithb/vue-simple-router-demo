@@ -10,6 +10,10 @@ import Vue from "vue";
 import { extendFrom, isArray, isString } from "@/core/utils/util.js";
 import { proxy } from "@/core/utils/proxy";
 
+export interface IJeModel {
+  nameSpace:string
+}
+
 export interface JEModelStatic {
   new (options: any): JEModel;
 }
