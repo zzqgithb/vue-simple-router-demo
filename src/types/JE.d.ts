@@ -8,5 +8,6 @@
  **/
 import { requestConfig } from "@/je/utils/ajax";
 interface JE {
+  [key:string] :any
   ajax: (requestConfig: requestConfig) => any;
 }
