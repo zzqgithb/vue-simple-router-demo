@@ -13,20 +13,24 @@
             class="uni-input"
             type="number"
             placeholder="手机号/账户"
-            v-model="testCtrl.username"
+            placeholder-style="color:#aab2bd;"
+            v-model="loginCtrl.username"
             @input="onKeyUsernameInput"
           />
+          <text class="jeicon jeicon-angle-right"></text>
         </view>
         <view class="uni-form-item uni-column">
+          <text class="jeicon jeicon-lock"></text>
           <input
             ref="password"
             class="uni-input"
             password
             type="text"
             placeholder="密码"
-            v-model="testCtrl.password"
-            @input="onKeyPasswordInput"
+            placeholder-style="color: #aab2bd;"
+            v-model="loginCtrl.password"
           />
+          <text class="jeicon jeicon-eye-close"></text>
         </view>
         <view class="uni-common-mt uni-change-login">
           <text>动态密码登录</text>
@@ -55,11 +59,10 @@ export default class Login extends Vue {
     };
   }
   created() {
-    this._testCtrl = this.$createCtrl(LoginController);
+    this._loginCtrl = this.$createCtrl(LoginController);
   }
-  get testCtrl(){
-    console.log('888',this._testCtrl);
-    return this._testCtrl;
+  get loginCtrl(){
+    return this._loginCtrl;
   }
   loginIn(){
     // 请求后台
@@ -72,9 +75,6 @@ export default class Login extends Vue {
   onKeyUsernameInput(event){
       this.username = event.target.value;
   }
-  onKeyPasswordInput(event){
-     this.password = event.target.value;
-  }
 }
 </script>
 
@@ -85,36 +85,46 @@ export default class Login extends Vue {
       width: 100%;
     }
     .login-logo {
-      width: 80px;
-      height: 80px;
+      width: 160rpx;
+      height: 160rpx;
       position: absolute;
       top: 10%;
       left: 50%;
-      margin-left: -40px;
+      margin-left: -80rpx;
     }
   }
   .uni-center {
-    margin-top: 60px;
+    margin-top: 120rpx;
     .uni-form-item {
       background: #f1f1f1;
-      border-radius: 8px;
-      width: 240px;
-      margin: 20px auto;
-      padding: 10px 30px;
+      border-radius: 16rpx;
+      width: 520rpx;
+      margin: 40rpx auto;
+      padding: 20rpx 40rpx;
+      display: flex;
+      justify-content: space-between;
       input {
+        margin-left: 30rpx;
+        flex: 1;
+      }
+      .jeicon {
+        color: #cfcfcf;
+        &.jeicon-angle-right {
+          transform: rotate(90deg);
+        }
       }
     }
     .uni-change-login {
-      width: 300px;
-      margin: 10px auto;
+      width: 600rpx;
+      margin: 20rpx auto;
       display: flex;
       justify-content: space-between;
       color: #386bd0;
     }
     .uni-button-login {
-      width: 300px;
-      margin: 100px auto;
-      box-shadow: 0 2px 2px 0 rgba(83, 109, 254, 0.44);
+      width: 600rpx;
+      margin: 200rpx auto;
+      box-shadow: 0 4rpx 4rpx 0 rgba(83, 109, 254, 0.44);
       color: #ffffff;
     }
   }
