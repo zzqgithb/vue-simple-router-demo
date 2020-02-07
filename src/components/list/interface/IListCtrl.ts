@@ -8,7 +8,7 @@
  **/
 // 数据的id或者是整条记录
 type dataItem = string | object;
-export interface IListCtrl {
+export default interface IListCtrl {
   // 创建数据集
   createStore: () => void;
 
