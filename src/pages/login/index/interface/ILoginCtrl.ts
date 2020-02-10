@@ -7,22 +7,25 @@
  * @Description 登录相关的接口类型
  **/
 import { ILoginModel } from "@/pages/login/index/interface/ILoginModel";
+import loginModelNum from '@/constacts/loginModelNum';
 
 // 登录控制器, 用于操作登录相关的逻辑
 export interface ILoginCtrl {
+  loginServiceCtrl?: ILoginService // 登录实现具体逻辑
   init: () => void; // 初始化选择器
   // 切换登录模式
   chooseLoginMode: (
-    loginModeType: /* 登录类型枚举 不同登录类型会获取到不同的登录实例 */ string
+    loginModeType: /* 登录类型枚举 不同登录类型会获取到不同的登录实例 */ loginModelNum
   ) => void;
   login: () => void; // 调用LoginService中login的实现
   forgetPwd: () => void; // 忘记密码
 }
 
+
 // 平台最基础的账号密码登录
 export interface ILoginService {
   // 调用各个授权登录的接口，返回用户的token
-  login(loginModel: ILoginModel): void;
+  login(loginModel: ILoginModel): string;
 }
 
 // 动态码登录
@@ -35,7 +38,7 @@ export interface ICaptchaLogin extends ILoginService {
 }
 
 // 第三方平台登录 TODO
-export interface IOtherLogin{
+export interface IOtherLogin {
   /**
    * @param 
    */

@@ -14,13 +14,17 @@
             type="number"
             placeholder="手机号/账户"
             placeholder-style="color:#aab2bd;"
-            v-model="loginCtrl.username"
+            v-model="loginCtrl.loginModel.username"
           />
           <text class="jeicon jeicon-angle-right"></text>
         </view>
         <view class="uni-form-item uni-column">
           <text class="jeicon jeicon-lock"></text>
-          <view v-show="codeShow" class="" style="flex:1;display:flex;">
+          <view
+            v-show="loginCtrl.loginModel.showVer"
+            class=""
+            style="flex:1;display:flex;"
+          >
             <input
               ref="password"
               class="uni-input"
@@ -28,29 +32,35 @@
               type="text"
               placeholder="密码"
               placeholder-style="color: #aab2bd;"
-              v-model="loginCtrl.password"
+              v-model="loginCtrl.loginModel.password"
             />
             <text class="jeicon jeicon-eye-close"></text>
           </view>
-          <view v-show="!codeShow" class="" style="flex:1;display:flex;">
+          <view
+            v-show="!loginCtrl.loginModel.showVer"
+            class=""
+            style="flex:1;display:flex;"
+          >
             <input
               ref="password"
               class="uni-input"
               type="text"
               placeholder="短信动态码"
               placeholder-style="color: #aab2bd;"
-              v-model="loginCtrl.captcha"
+              v-model="loginCtrl.loginModel.captcha"
             />
             <text class="uni-getcode" @click="getCaptcha">获取</text>
           </view>
         </view>
         <view class="uni-common-mt uni-change-login">
-          <text @click="codeShow = !codeShow">动态密码登录</text>
+          <!-- <text @click="loginCtrl.loginModel.showVer = !loginCtrl.loginModel.showVer">动态密码登录</text> -->
           <text>忘记密码？</text>
         </view>
       </view>
       <view class="uni-padding-wrap uni-common-mt uni-button-login">
-        <button type="primary" @click="loginIn">登录</button>
+        <button type="primary" @click="loginCtrl.login.call(loginCtrl)">
+          登录
+        </button>
         <view class="uni-other-login">
           <text class="jeicon jeicon-qq"></text>
           <text class="jeicon jeicon-weixin"></text>
@@ -62,35 +72,15 @@
 
 <script type="text/ecmascript-6">
 import { Component, Vue ,Watch} from "vue-property-decorator";
-import LoginController from "@/pages/login/controller/LoginController";
-import  ILoginModel  from "@/pages/login/index/interface/ILoginModel";
+import LoginController from "@/pages/login/index/controller/LoginController";
 
 @Component({})
 export default class Login extends Vue {
-  data(){
-    return{
-      codeShow:true,
-    };
-  }
   created() {
     this._loginCtrl = this.$createCtrl(LoginController);
-    this.loginFn = new LoginController(this.loginCtrl);
   }
   get loginCtrl(){
     return this._loginCtrl||{};
-  }
-  loginIn(){
-    // 处理业务
-    this.loginFn.loginIn();
-  }
-  //获取验证码
-  getCaptcha(){
-    this.loginCtrl.mode="dtm";
-    this.loginFn.loginIn();
-  }
-  @Watch('codeShow')
-  onChangeValue(nv,ov){
-    nv?'':this.loginCtrl.mode="dtmdl";
   }
 }
 </script>
