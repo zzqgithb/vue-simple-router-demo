@@ -13,7 +13,7 @@ import Vue from "vue";
 function initMixins() {
     Vue.prototype.$createCtrl = function (controller, options) {
         controller.prototype.VM = this;
-        var f = new controller(options);
+        const f = new controller(options);
         controller.prototype.VM = null;
         return f;
     };

@@ -12,6 +12,7 @@
 <script lang="ts">
 import http from "@/je/utils/ajax";
 import { Component, Vue, Watch } from "vue-property-decorator";
+import { State, Action, Mutation, namespace } from "vuex-class";
 import TestController from "@/pages/test/controller/TestController";
 @Component({})
 export default class Test extends Vue {

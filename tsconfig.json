@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -15,7 +15,7 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "@dcloudio/types/uni-app"
+      "@dcloudio/types/uni-app",
     ],
     "paths": {
       "@/*": [

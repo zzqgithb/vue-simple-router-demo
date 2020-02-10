@@ -8,8 +8,8 @@
  **/
 import { isPlainObject } from "@/core/utils/util.js";
 import JEModel from "@/core/mvc/model/JEModel";
-let JEController = /** @class */ (function() {
-  function JEController() {
+export default class JEController {
+  constructor() {
     this._VM = null;
     this._model = {};
     if (this.__proto__.VM) {
@@ -23,12 +23,12 @@ let JEController = /** @class */ (function() {
    * 设置实例
    * @param vm
    */
-  JEController.prototype.setVM = function(vm) {
+  setVM(vm) {
     this._VM = vm;
-  };
-  JEController.prototype.getVM = function() {
+  }
+  getVM() {
     return this._VM;
-  };
+  }
   /**
    * 创建模型类
    * @private
@@ -42,7 +42,7 @@ let JEController = /** @class */ (function() {
    * 创建模型对象
    * @param model 模型类
    */
-  JEController.prototype.createModel = function(ModelCons, options) {
+  createModel(ModelCons, options) {
     if (!(ModelCons.prototype instanceof JEModel)) {
       throw new Error("模型参数异常");
     }
@@ -56,45 +56,43 @@ let JEController = /** @class */ (function() {
       modelIns.defineReactive(this._VM);
     }
     return modelIns;
-  };
+  }
   /**
    * 设置模型对象
    * @param key
    * @param val
    * @private 内部方法
    */
-  JEController.prototype._setModel = function(key, val) {
+  _setModel(key, val) {
     this.setModel(key, val);
     this[key] = val;
-  };
+  }
   /**
    * 设置模型对象 并继承BaseModel
    * @param key
    * @param obj
    */
-  JEController.prototype.setModel = function(key, obj) {
+  setModel(key, obj) {
     if (isPlainObject(obj) && !(obj instanceof JEModel)) {
-      let Sub = JEModel.extend(key);
+      const Sub = JEModel.extend(key);
       this.createModel(Sub, obj);
     } else {
       this._model[key] = obj;
     }
-  };
+  }
   /**
    * 获取模型对象
    */
-  JEController.prototype.getModel = function(key) {
+  getModel(key) {
     return this._model[key];
-  };
+  }
   /**
    * 判断是否有某一个命名的参数
    * @param nameSpace
    * @return {boolean}
    */
-  JEController.prototype.hasModel = function(nameSpace) {
+  hasModel(nameSpace) {
     return this._model.hasOwnProperty(nameSpace);
-  };
-  return JEController;
-})();
-export default JEController;
+  }
+}
 //# sourceMappingURL=JEController.js.map

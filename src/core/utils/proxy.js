@@ -7,7 +7,7 @@
  * @Description 代理对象
  * */
 import { noop } from "@/core/utils/util.js";
-var sharedPropertyDefinition = {
+const sharedPropertyDefinition = {
     enumerable: true,
     configurable: true,
     get: noop,

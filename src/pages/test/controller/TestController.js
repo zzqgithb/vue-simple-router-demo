@@ -1,4 +1,3 @@
-import { __extends } from "tslib";
 /**
  * @Author : ZiQin Zhai
  * @Date : 2020/1/15 18:10
@@ -9,19 +8,15 @@ import { __extends } from "tslib";
  **/
 import JEController from "@/core/mvc/controller/JEController";
 import TestModel from "@/pages/test/model/TestModel";
-var TestController = /** @class */ (function (_super) {
-    __extends(TestController, _super);
-    function TestController() {
-        var _this = _super.call(this) || this;
-        _this.init();
-        return _this;
+export default class TestController extends JEController {
+    constructor() {
+        super();
+        this.init();
     }
-    TestController.prototype.init = function () {
+    init() {
         this.createModel(TestModel, {
             testValue: "1",
         });
-    };
-    return TestController;
-}(JEController));
-export default TestController;
+    }
+}
 //# sourceMappingURL=TestController.js.map

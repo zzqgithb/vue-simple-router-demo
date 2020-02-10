@@ -1,6 +1,6 @@
-import { __awaiter, __generator } from "tslib";
-let Parse = /** @class */ (function() {
-  function Parse(options) {
+import { __awaiter } from "tslib";
+export default class Parse {
+  constructor(options) {
     this.name = options.name;
     this.pluginUrls = options.pluginUrls;
     this.tempBlob = options.tempBlob;
@@ -8,37 +8,33 @@ let Parse = /** @class */ (function() {
   /**
    * 初始化组件
    */
-  Parse.prototype.initPlugin = function() {
+  initPlugin() {
     globalThis.eval.call(this, this.tempBlob);
-  };
+  }
   /**
    * 下载文件 将所有依赖都读取到， DEMO使用
    */
-  Parse.download = function(urlLists) {
-    let urlPromises = urlLists.map(function(url) {
+  static download(urlLists) {
+    const urlPromises = urlLists.map(url => {
       return Parse.downloadFiles(url);
     });
-    return new Promise(function(resolve) {
-      Promise.all(urlPromises).then(function(results) {
-        resolve(
-          results.reduce(function(func, targetFunc) {
-            return func + targetFunc;
-          })
-        );
+    return new Promise(resolve => {
+      Promise.all(urlPromises).then(results => {
+        resolve(results.reduce((func, targetFunc) => func + targetFunc));
       });
     });
-  };
+  }
   /**
    * 下载组件
    * @param url
    * @param func
    */
-  Parse.downloadFiles = function(url) {
+  static downloadFiles(url) {
     url = url.replace("dev", "dev");
-    return new Promise(function(resolve) {
+    return new Promise(resolve => {
       uni.request({
-        url: url,
-        success: function(res) {
+        url,
+        success(res) {
           if (res.statusCode === 200) {
             resolve(res.data);
           }
@@ -62,37 +58,24 @@ let Parse = /** @class */ (function() {
       //   }
       // });
     });
-  };
+  }
   /**
    * 创建一个插件解析类
    * @param options
    */
-  Parse.create = function(options) {
-    return __awaiter(this, void 0, void 0, function() {
-      let Cons, blobUrl;
-      return __generator(this, function(_a) {
-        switch (_a.label) {
-          case 0:
-            Cons = Parse;
-            return [4 /*yield*/, Cons.download(options.pluginUrls)];
-          case 1:
-            blobUrl = _a.sent();
-            return [
-              2 /*return*/,
-              new Promise(function(resolve) {
-                let parse = new Cons({
-                  name: options.name,
-                  pluginUrls: options.pluginUrls,
-                  tempBlob: blobUrl
-                });
-                resolve(parse);
-              }),
-            ];
-        }
+  static create(options) {
+    return __awaiter(this, void 0, void 0, function*() {
+      let Cons = Parse;
+      const blobUrl = yield Cons.download(options.pluginUrls);
+      return new Promise(resolve => {
+        const parse = new Cons({
+          name: options.name,
+          pluginUrls: options.pluginUrls,
+          tempBlob: blobUrl
+        });
+        resolve(parse);
       });
     });
-  };
-  return Parse;
-})();
-export default Parse;
+  }
+}
 //# sourceMappingURL=Parse.js.map

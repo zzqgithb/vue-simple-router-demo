@@ -7,6 +7,7 @@
  * @Description JE头文件
  **/
 import { requestConfig } from "@/je/utils/ajax";
-interface JE {
-  ajax: (requestConfig: requestConfig) => any;
+export declare const JE: Je;
+export declare class Je {
+  ajax: (config: requestConfig) => any;
 }
