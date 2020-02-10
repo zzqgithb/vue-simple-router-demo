@@ -8,4 +8,5 @@
  **/
 import ajax from "@/je/utils/ajax";
 JE.ajax = ajax.request;
+JE.ajax = ajax.request;
 //# sourceMappingURL=je.mixins.js.map
