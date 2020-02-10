@@ -6,6 +6,5 @@
  * @Last Modifined time : 2020/2/6 17:01
  * @Description
  **/
-/// <reference path="../types/je.d.ts" />
 import ajax from "@/je/utils/ajax";
 JE.ajax = ajax.request;
