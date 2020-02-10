@@ -9,15 +9,12 @@
 import JEController from "@/core/mvc/controller/JEController";
 import LoginModel from "@/pages/login/model/LoginModel";
 import  {ILoginModel}  from "@/pages/login/index/interface/ILoginModel";
-// import  ILoginService  from "@/pages/login/index/interface/ILoginCtrl";
 
 export default class LoginController extends JEController {
   constructor(public params:ILoginModel) {
     super();
-    this.loginIn();
   }
   loginIn(){
-    console.log('请求登录',this);
-    this.createModel<ILoginModel>(LoginModel, this.params);
+    this.createModel<ILoginModel>(LoginModel,this.params);
   }
 }

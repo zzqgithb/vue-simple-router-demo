@@ -22,7 +22,7 @@ export interface ILoginCtrl {
 // 平台最基础的账号密码登录
 export interface ILoginService {
   // 调用各个授权登录的接口，返回用户的token
-  login(loginModel: ILoginModel): string;
+  login(loginModel: ILoginModel): void;
 }
 
 // 动态码登录
@@ -34,4 +34,9 @@ export interface ICaptchaLogin extends ILoginService {
   getCaptcha: (telephone: number) => void;
 }
 
-// 第三方平台登录 （待补充）
+// 第三方平台登录 TODO
+export interface IOtherLogin{
+  /**
+   * @param 
+   */
+}

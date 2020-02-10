@@ -12,7 +12,7 @@ export interface ILoginModel {
   // 用户名
   username: string;
   // 密码
-  password: string;
+  password?: string;
   // 平台验证码
   captcha?: string;
   // 第三方平台accessToken

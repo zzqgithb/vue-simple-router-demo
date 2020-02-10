@@ -15,7 +15,6 @@
             placeholder="手机号/账户"
             placeholder-style="color:#aab2bd;"
             v-model="loginCtrl.username"
-            @input="onKeyUsernameInput"
           />
           <text class="jeicon jeicon-angle-right"></text>
         </view>
@@ -40,9 +39,9 @@
               type="text"
               placeholder="短信动态码"
               placeholder-style="color: #aab2bd;"
-              v-model="loginCtrl.password"
+              v-model="loginCtrl.captcha"
             />
-            <text class="uni-getcode">获取</text>
+            <text class="uni-getcode" @click="getCaptcha">获取</text>
           </view>
         </view>
         <view class="uni-common-mt uni-change-login">
@@ -62,7 +61,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-import ILoginService from "@/pages/login/index/interface/ILoginCtrl";
 import { Component, Vue } from "vue-property-decorator";
 import LoginController from "@/pages/login/controller/LoginController";
 import  ILoginModel  from "@/pages/login/index/interface/ILoginModel";
@@ -71,27 +69,32 @@ import  ILoginModel  from "@/pages/login/index/interface/ILoginModel";
 export default class Login extends Vue {
   data(){
     return{
-      username:'',
-      password:'',
       codeShow:true,
     };
   }
+  // @watch(){
+  //   codeShow(nv,ov){
+
+  //   }
+  // }
   created() {
+    this._loginCtrl = this.$createCtrl(LoginController);
+    this.loginFn = new LoginController(this.loginCtrl);
   }
   get loginCtrl(){
     return this._loginCtrl||{};
   }
   loginIn(){
-    // 请求后台
-    // 成功后跳转
-    this._loginCtrl = this.$createCtrl(LoginController({username:'11'}));
+    // 处理业务
+    this.loginFn.loginIn();
     return;
     uni.navigateTo({
       url: `../../../test/test?params=${Math.random()}`,
     });
   }
-  onKeyUsernameInput(event){
-      this.username = event.target.value;
+  //获取验证码
+  getCaptcha(){
+    this.loginFn.loginIn();
   }
 }
 </script>
