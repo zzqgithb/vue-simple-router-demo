@@ -11,7 +11,7 @@ import { ILoginModel } from "@/pages/login/index/interface/ILoginModel";
 // 登录控制器, 用于操作登录相关的逻辑
 export interface ILoginCtrl {
   init: () => void; // 初始化选择器
-  // 切换登录模式
+  // 切换登录模式 
   chooseLoginMode: (
     loginModeType: /* 登录类型枚举 不同登录类型会获取到不同的登录实例 */ string
   ) => void;
