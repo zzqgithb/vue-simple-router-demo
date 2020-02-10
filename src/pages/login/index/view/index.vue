@@ -61,7 +61,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue ,Watch} from "vue-property-decorator";
 import LoginController from "@/pages/login/controller/LoginController";
 import  ILoginModel  from "@/pages/login/index/interface/ILoginModel";
 
@@ -72,11 +72,6 @@ export default class Login extends Vue {
       codeShow:true,
     };
   }
-  // @watch(){
-  //   codeShow(nv,ov){
-
-  //   }
-  // }
   created() {
     this._loginCtrl = this.$createCtrl(LoginController);
     this.loginFn = new LoginController(this.loginCtrl);
@@ -87,14 +82,15 @@ export default class Login extends Vue {
   loginIn(){
     // 处理业务
     this.loginFn.loginIn();
-    return;
-    uni.navigateTo({
-      url: `../../../test/test?params=${Math.random()}`,
-    });
   }
   //获取验证码
   getCaptcha(){
+    this.loginCtrl.mode="dtm";
     this.loginFn.loginIn();
+  }
+  @Watch('codeShow')
+  onChangeValue(nv,ov){
+    nv?'':this.loginCtrl.mode="dtmdl";
   }
 }
 </script>

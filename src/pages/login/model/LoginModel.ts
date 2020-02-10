@@ -17,31 +17,30 @@ export default class LoginModel extends JEModel implements IJeModel {
   constructor(public params: ILoginModel) {
     super(params);
     params = this.params;
-    params.code = 'dtmdl';
     console.log('此处是login的具体实现',this.params);
     //假数据--zh(账号密码) --dtm(动态码)  ---dsf(第三方)
-    switch(params.code){
+    switch(params.mode){
       case 'dtm':
-      this.CaptchaLogin.getCaptcha(13161335902);
+      this.CaptchaLogin.getCaptcha(Number(params.username));
       break;
       case 'dtmdl':
-      this.CaptchaLogin.login({mode:"dtmdl",username:'333',captcha:'444'});
+      this.CaptchaLogin.login({mode:params.mode,username:params.username,captcha:params.captcha});
       break;
       case 'dsf':
       this.OtherLogin();
       break;
       default:
-      this.LoginService.login({mode:"111",username:'333',password:'444'});
+      this.LoginService.login({mode:params.mode,username:params.username,password:params.password});
     }
   }
   LoginService:ILoginService = {
     login:()=>{
       console.log('账号密码请求登录');
-      return;
-      JE.ajax({
+      const login = JE.ajax({
         url:'',
-
+        params:{},
       })
+      console.log(login.res)
     }
   };
   CaptchaLogin:ICaptchaLogin = {
@@ -54,5 +53,9 @@ export default class LoginModel extends JEModel implements IJeModel {
   }
   OtherLogin(){
     console.log('三方登录')
+  }
+  //登录请求的具体实现
+  ajaxLogin(){
+
   }
 }
