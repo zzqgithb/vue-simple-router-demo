@@ -51,7 +51,13 @@ export default class LoginCtrl extends JEController implements ILoginCtrl {
     if(this.loginServiceCtrl){
       let params =  this.loginServiceCtrl.login(this.loginModel);
       //不同的登录传参不同，请求同一个登录
-      JE.ajax({}).then(res=>{
+      console.log('params',params)
+      JE.ajax({
+        url:'/rbac/login/login',
+        data:JSON.parse(params),
+      }).then((res:any)=>{
+        console.log('res',res);
+        alert(res.message)
         //不同登录请求 处理返回参数
         //this.loginServiceCtrl.afterLogin()
       })
@@ -61,5 +67,4 @@ export default class LoginCtrl extends JEController implements ILoginCtrl {
    * 忘记密码 实现跳转 TODO 忘记密码设置成功直接登录或者跳转登录
    */
   forgetPwd(): void {};
-
 }

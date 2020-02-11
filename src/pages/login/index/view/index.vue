@@ -53,7 +53,12 @@
           </view>
         </view>
         <view class="uni-common-mt uni-change-login">
-          <!-- <text @click="loginCtrl.loginModel.showVer = !loginCtrl.loginModel.showVer">动态密码登录</text> -->
+          <text
+            @click="
+              loginCtrl.loginModel.showVer = !loginCtrl.loginModel.showVer
+            "
+            >动态密码登录</text
+          >
           <text>忘记密码？</text>
         </view>
       </view>

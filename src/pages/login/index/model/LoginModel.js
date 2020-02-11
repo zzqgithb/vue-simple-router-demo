@@ -1,14 +1,21 @@
 import { __decorate, __extends } from "tslib";
 import JEModel from '@/core/mvc/model/JEModel';
 import { ObserverKey } from '@/core/mvc/model/modelDecorator';
+//定义loginModel类，继承自JEModel 并且实现IJeModel和ILoginModel接口
 var LoginModel = /** @class */ (function (_super) {
     __extends(LoginModel, _super);
     function LoginModel(params) {
-        var _this = _super.call(this, params) || this;
+        var _this = 
+        //继承父级参数
+        _super.call(this, params) || this;
+        //私有命名空间
         _this._nameSpace = 'loginModel';
-        _this._mode = "captcha" /* CAPTCHA */;
+        //私有登录方式
+        _this._mode = "basic" /* BASIC */; //默认账户密码登录
+        //公有双向绑定 username-必要传参
         _this._username = '';
-        _this._codeShow = true;
+        //公有非必要传参showVer
+        _this._showVer = true;
         return _this;
     }
     Object.defineProperty(LoginModel.prototype, "nameSpace", {
@@ -81,12 +88,12 @@ var LoginModel = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(LoginModel.prototype, "codeShow", {
+    Object.defineProperty(LoginModel.prototype, "showVer", {
         get: function () {
-            return this._codeShow;
+            return this._showVer;
         },
         set: function (value) {
-            this._codeShow = value;
+            this._showVer = value;
         },
         enumerable: true,
         configurable: true
@@ -102,7 +109,7 @@ var LoginModel = /** @class */ (function (_super) {
     ], LoginModel.prototype, "_captcha", void 0);
     __decorate([
         ObserverKey()
-    ], LoginModel.prototype, "_codeShow", void 0);
+    ], LoginModel.prototype, "_showVer", void 0);
     return LoginModel;
 }(JEModel));
 export default LoginModel;

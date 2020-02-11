@@ -9,7 +9,10 @@ export default class BasicLoginCtrl implements ILoginService {
   login(loginModel: ILoginModel): string {//参数遵循ILoginModel接口定义
     const username = loginModel.username;
     const password = loginModel.password;
-    console.log(username, password)
-    return '' //返回params  为请求登录做准备
+    return JSON.stringify({
+      "j_username":username,
+      "j_password":password,
+      isNew:1
+    })//返回params  为请求登录做准备
   }
 }
