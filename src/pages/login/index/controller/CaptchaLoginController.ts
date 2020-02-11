@@ -16,6 +16,12 @@ export default class CaptchaLoginCtrl implements ICaptchaLogin {
   login(loginModel: ILoginModel): string {
     const username = loginModel.username
     const captcha = loginModel.captcha
-    return ''
+    return JSON.stringify({
+      "j_username": username,
+      "loginType": 'PHONE',
+      "j_code": captcha,
+      "state": '',
+      "isNew": 1,
+    })
   }
 }

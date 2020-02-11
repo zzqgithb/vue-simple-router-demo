@@ -74,7 +74,15 @@ export default class LoginModel extends JEModel implements IJeModel, ILoginModel
   public set showVer(value: boolean) {
     this._showVer = value;
   }
-
+ //公有非必要传参showVer
+ @ObserverKey()
+ private _showPwd: boolean = true;
+ public get showPwd(): boolean {
+   return this._showPwd;
+ }
+ public set showPwd(value: boolean) {
+   this._showPwd = value;
+ }
   constructor(params:ILoginModel){// 参数遵循ILoginModel接口规则
     //继承父级参数
     super(params);

@@ -16,6 +16,8 @@ var LoginModel = /** @class */ (function (_super) {
         _this._username = '';
         //公有非必要传参showVer
         _this._showVer = true;
+        //公有非必要传参showVer
+        _this._showPwd = true;
         return _this;
     }
     Object.defineProperty(LoginModel.prototype, "nameSpace", {
@@ -98,6 +100,16 @@ var LoginModel = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(LoginModel.prototype, "showPwd", {
+        get: function () {
+            return this._showPwd;
+        },
+        set: function (value) {
+            this._showPwd = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         ObserverKey()
     ], LoginModel.prototype, "_username", void 0);
@@ -110,6 +122,9 @@ var LoginModel = /** @class */ (function (_super) {
     __decorate([
         ObserverKey()
     ], LoginModel.prototype, "_showVer", void 0);
+    __decorate([
+        ObserverKey()
+    ], LoginModel.prototype, "_showPwd", void 0);
     return LoginModel;
 }(JEModel));
 export default LoginModel;

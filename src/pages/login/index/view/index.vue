@@ -28,13 +28,34 @@
             <input
               ref="password"
               class="uni-input"
-              password
               type="text"
+              v-if="!loginCtrl.loginModel.showPwd"
               placeholder="密码"
               placeholder-style="color: #aab2bd;"
               v-model="loginCtrl.loginModel.password"
             />
-            <text class="jeicon jeicon-eye-close"></text>
+            <input
+              ref="password"
+              class="uni-input"
+              type="password"
+              v-if="loginCtrl.loginModel.showPwd"
+              placeholder="密码"
+              placeholder-style="color: #aab2bd;"
+              v-model="loginCtrl.loginModel.password"
+            />
+            <text
+              :class="[
+                'jeicon',
+                {
+                  'jeicon-eye': !loginCtrl.loginModel.showPwd,
+                  'jeicon-eye-close': loginCtrl.loginModel.showPwd
+                }
+              ]"
+              @tap="
+                loginCtrl.loginModel.showPwd = !loginCtrl.loginModel.showPwd
+              "
+            >
+            </text>
           </view>
           <view
             v-show="!loginCtrl.loginModel.showVer"
@@ -42,11 +63,11 @@
             style="flex:1;display:flex;"
           >
             <input
-              ref="password"
               class="uni-input"
-              type="text"
+              type="number"
               placeholder="短信动态码"
               placeholder-style="color: #aab2bd;"
+              maxlength="6"
               v-model="loginCtrl.loginModel.captcha"
             />
             <text class="uni-getcode" @click="getCaptcha">获取</text>
@@ -121,6 +142,7 @@ export default class Login extends Vue {
       }
       .jeicon {
         color: #cfcfcf;
+        margin-top: 6rpx;
         &.jeicon-angle-right {
           transform: rotate(90deg);
         }

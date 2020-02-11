@@ -58,6 +58,7 @@ var LoginCtrl = /** @class */ (function (_super) {
                 data: JSON.parse(params),
             }).then(function (res) {
                 console.log('res', res);
+                alert(res.message);
                 //不同登录请求 处理返回参数
                 //this.loginServiceCtrl.afterLogin()
             });

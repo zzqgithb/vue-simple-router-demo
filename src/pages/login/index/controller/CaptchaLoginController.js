@@ -17,7 +17,13 @@ var CaptchaLoginCtrl = /** @class */ (function () {
     CaptchaLoginCtrl.prototype.login = function (loginModel) {
         var username = loginModel.username;
         var captcha = loginModel.captcha;
-        return '';
+        return JSON.stringify({
+            "j_username": username,
+            "loginType": 'PHONE',
+            "j_code": captcha,
+            "state": '',
+            "isNew": 1,
+        });
     };
     return CaptchaLoginCtrl;
 }());
