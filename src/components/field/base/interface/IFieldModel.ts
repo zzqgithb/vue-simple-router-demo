@@ -8,7 +8,7 @@
  **/
 import fieldTypeEnum from "@/constacts/fieldTypeEnum";
 
-import IFormCtrl from "../../form/interface/IFormCtrl";
+import IFormCtrl from "../../../form/interface/IFormCtrl";
 export default interface IFieldModel {
   form?: IFormCtrl; // 当前字段关联的表单
   readonly?: boolean; // 表单是否只读

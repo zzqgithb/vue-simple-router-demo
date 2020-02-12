@@ -1,4 +1,4 @@
-import IFieldCtrl from '@/components/field/interface/IFieldCtrl';
+import IFieldCtrl from '@/components/field/base/interface/IFieldCtrl';
 /**
  * @Author : ZiQin Zhai
  * @Date : 2020/2/12 9:27
