@@ -13,14 +13,20 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { State, Action, Mutation, namespace } from "vuex-class";
 import TestController from "@/pages/test/controller/TestController";
+const testStore:any = namespace("testStore");
+console.log(testStore);
 @Component({})
 export default class Test extends Vue {
+  @State('testStore') testStore:any;
+  @testStore.Mutation("setUserName") setUserName:any;
   isShow = false;
   created() {
+    this.setUserName("asdsa");
+    console.log(this.testStore);
     JE.ajax({
       url: "/je/phone/app/loadApk",
       data: { apkCode: "2019-0102-1347-8233" },
-    }).then(res => {
+    }).then((res:any) => {
       console.log(res);
     });
     window.test = this;

@@ -6,7 +6,7 @@
  * @Last Modifined time : 2020/1/11 15:02
  * @Description
  **/
-import Vue from "types/vue";
+import Vue from "@/types/vue";
 
 declare module "vue/types/vue" {
   interface Vue {
@@ -15,7 +15,7 @@ declare module "vue/types/vue" {
       [str: string]: any;
     };
     $route: any;
-
+    $createCtrl: (Ctor: any, params?: object) => any;
     [str: string]: any;
   }
 }

@@ -5,7 +5,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-import ListController from '../../../../components/list/controller/ListController';
 export default {
     props: {},
     data() {
@@ -13,7 +12,6 @@ export default {
     },
     computed: {},
     created() {
-      this.$createCtrl(ListController,{})
     },
     mounted() {
     },
