@@ -10,8 +10,9 @@ interface Window {
   [key: string]: any;
 }
 
-declare module GlobalThis {
+declare namespace GlobalThis {
   interface globalThis {
     [key: string]: any;
   }
 }
+

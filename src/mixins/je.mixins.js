@@ -7,5 +7,6 @@
  * @Description
  **/
 import ajax from "@/je/utils/ajax";
+import { JE } from "../../types/JE";
 JE.ajax = ajax.request;
 //# sourceMappingURL=je.mixins.js.map

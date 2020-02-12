@@ -6,7 +6,7 @@
  * @Last Modifined time : 2020/1/11 15:02
  * @Description
  **/
-import Vue from "vue";
+import Vue from "types/vue";
 
 declare module "vue/types/vue" {
   interface Vue {
