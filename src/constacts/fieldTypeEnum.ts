@@ -6,6 +6,7 @@
  * @Last Modifined time : 2020/2/12 11:10
  * @Description
  **/
-export default enum fieldTypeEnum{
-    text='text'
+const enum fieldTypeEnum {
+  text = "text"
 }
+export default fieldTypeEnum;
