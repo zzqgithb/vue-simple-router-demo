@@ -6,12 +6,9 @@
  * @Last Modifined time : 2019/11/13 15:54
  * @Description 代理对象
  * */
-import { noop } from "@/core/utils/util.js";
-const sharedPropertyDefinition = {
+let sharedPropertyDefinition = {
     enumerable: true,
     configurable: true,
-    get: noop,
-    set: noop,
 };
 /**
  * 创建代理

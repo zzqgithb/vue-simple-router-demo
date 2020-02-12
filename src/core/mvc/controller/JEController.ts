@@ -6,7 +6,7 @@
  * @Last Modifined time : 2020/1/15 14:14
  * @Description
  **/
-import { isPlainObject } from "@/core/utils/util.js";
+import { isPlainObject } from "@/core/utils/util";
 import JEModel, { JEModelStatic } from "@/core/mvc/model/JEModel";
 
 export interface JEControllerStatic {

@@ -7,7 +7,7 @@
  * @Description 基类模型
  * */
 import Vue from "vue";
-import { extendFrom, isArray, isString } from "@/core/utils/util.js";
+import { extendFrom } from "@/core/utils/util.ts";
 import { proxy } from "@/core/utils/proxy";
 
 export interface JEModelStatic {

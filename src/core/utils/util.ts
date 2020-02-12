@@ -20,24 +20,8 @@ export const emptyObject = Object.freeze({});
  * @param v 待校验数据
  * @returns boolean
  */
-export function isUndef(v) {
+export function isUndef(v: any) {
   return v === undefined || v === null;
-}
-
-/**
- * 判断当前的路由是否需要keep-alive
- * @param obj 路由的详细参数
- * @returns boolean
- */
-export function isKeepAlive(status, name, arr) {
-  if (JE.isEmpty(name) || JE.isNotEmpty(arr)) {
-    return [...new Set(arr)];
-  }
-  // 如果数组是个空就直接添加并且是需要keepAlive
-  if (status) {
-    return [...new Set(arr).add(name)];
-  }
-  return [...new Set(arr).delete(name)];
 }
 
 /**
@@ -45,7 +29,7 @@ export function isKeepAlive(status, name, arr) {
  * @param v 待校验数据
  * @returns boolean
  */
-export function isDef(v) {
+export function isDef(v: any) {
   return v !== undefined && v !== null;
 }
 
@@ -54,7 +38,7 @@ export function isDef(v) {
  * @param v 待校验数据
  * @returns boolean
  */
-export function isRealTrue(v) {
+export function isRealTrue(v: any) {
   return v === true;
 }
 
@@ -63,7 +47,7 @@ export function isRealTrue(v) {
  * @param v 待校验数据
  * @returns boolean
  */
-export function isTrue(v) {
+export function isTrue(v: any) {
   return !!v;
 }
 
@@ -72,7 +56,7 @@ export function isTrue(v) {
  * @param v 待校验数据
  * @returns boolean
  */
-export function isRealFalse(v) {
+export function isRealFalse(v: any) {
   return v === false;
 }
 
@@ -81,7 +65,7 @@ export function isRealFalse(v) {
  * Check if value is primitive
  * return boolean
  */
-export function isPrimitive(value) {
+export function isPrimitive(value: any) {
   return (
     typeof value === "string" ||
     typeof value === "number" ||
@@ -98,16 +82,16 @@ export function isPrimitive(value) {
  * is a JSON-compliant type.
  * return boolean
  */
-export function isObject(obj) {
+export function isObject(obj: any) {
   return obj !== null && typeof obj === "object";
 }
 
 /**
  * Get the raw type string of a value e.g. [object Object]
  */
-const _toString = Object.prototype.toString;
+const _toString: () => any = Object.prototype.toString;
 
-export function toRawType(value) {
+export function toRawType(value: any) {
   return _toString.call(value).slice(8, -1);
 }
 
@@ -117,7 +101,7 @@ export function toRawType(value) {
  * @param index 要获取的下标
  * @returns item 目标下标的元素
  */
-export function hasIndex(arr, index) {
+export function hasIndex(arr: any, index: any) {
   let item;
   if (Array.isArray(arr) && arr.length > index) {
     item = arr[index];
@@ -130,14 +114,14 @@ export function hasIndex(arr, index) {
  * @param arr 目标数组
  * @returns {arg is Array<any> | boolean}
  */
-export function isEmptyArray(arr) {
+export function isEmptyArray(arr: any) {
   return Array.isArray(arr) && arr.length === 0;
 }
 
 /**
  * 验证是否为一个数组
  */
-export function isArray(arr) {
+export function isArray(arr: any) {
   return Array.isArray(arr);
 }
 
@@ -147,14 +131,14 @@ export function isArray(arr) {
  * for plain JavaScript objects.
  * return boolean
  */
-export function isPlainObject(obj) {
+export function isPlainObject(obj: any) {
   return _toString.call(obj) === "[object Object]";
 }
 
 /**
  * 判断一个对象是否为String
  */
-export function isString(obj) {
+export function isString(obj: any) {
   return _toString.call(obj) === "[object String]";
 }
 
@@ -164,7 +148,7 @@ export function isString(obj) {
  * @param connect 字符串的连接方式
  * @return {*}
  */
-export function stringToArray(params, connect = ",") {
+export function stringToArray(params: any, connect = ",") {
   if (!isString(params) && !isArray(params)) {
     throw new Error(`参数异常，请检查参数类型 【${_toString().call(params)}】`);
   }
@@ -177,7 +161,7 @@ export function stringToArray(params, connect = ",") {
  * for plain JavaScript objects.
  * return boolean
  */
-export function isRegExp(v) {
+export function isRegExp(v: any) {
   return _toString.call(v) === "[object RegExp]";
 }
 
@@ -185,7 +169,7 @@ export function isRegExp(v) {
  * 检查val是否是一个有效的数组索引，其实就是验证是否是一个非无穷大的正整数
  * Check if val is a valid array index.
  */
-export function isValidArrayIndex(val) {
+export function isValidArrayIndex(val: any) {
   const n = parseFloat(String(val));
   return n >= 0 && Math.floor(n) === n && isFinite(val);
 }
@@ -195,7 +179,7 @@ export function isValidArrayIndex(val) {
  * Convert a value to a string that is actually rendered.
  * return String
  */
-export function toString(val) {
+export function toString(val: any) {
   return val == null
     ? ""
     : typeof val === "object"
@@ -209,7 +193,7 @@ export function toString(val) {
  * If the conversion fails, return original string.
  * return number | string
  */
-export function toNumber(val) {
+export function toNumber(val: any) {
   const n = parseFloat(val);
   return isNaN(n) ? val : n;
 }
@@ -219,7 +203,7 @@ export function toNumber(val) {
  * 移除数组中的某一个元素
  * return Array<any> | void
  */
-export function remove(arr, item) {
+export function remove(arr: any, item: any) {
   if (arr.length) {
     const index = arr.indexOf(item);
     if (index > -1) {
@@ -239,44 +223,44 @@ const { hasOwnProperty } = Object.prototype;
  * @param key 值
  * @returns {boolean}
  */
-export function hasOwn(obj, key) {
+export function hasOwn(obj: any, key: any) {
   return hasOwnProperty.call(obj, key);
 }
 
 /**
  * 柯里化函数
  * Create a cached version of a pure function.
- */
-export function cached(fn) {
+export function cached(fn: any) {
   const cache = Object.create(null);
   return function cachedFn(str) {
     const hit = cache[str];
     return hit || (cache[str] = fn(str));
   };
 }
+ */
 
 /**
  * 将字符串处理为驼峰
  * Camelize a hyphen-delimited string.
  */
-const camelizeRE = /-(\w)/g;
-export const camelize = cached(str =>
-  str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ""))
-);
+// const camelizeRE = /-(\w)/g;
+// export const camelize = cached(str =>
+//   str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ""))
+// );
 
 /**
  * Capitalize a string.
  */
-export const capitalize = cached(
-  str => str.charAt(0).toUpperCase() + str.slice(1)
-);
+// export const capitalize = cached(
+//   str => str.charAt(0).toUpperCase() + str.slice(1)
+// );
 
 /**
  * Convert an Array-like object to a real Array.
  * 将类数组对象处理为真实的数组
  * return Array<any>
  */
-export function toArray(list, start) {
+export function toArray(list: any, start: any) {
   start = start || 0;
   let i = list.length - start;
   const ret = new Array(i);
@@ -291,7 +275,7 @@ export function toArray(list, start) {
  * 浅拷贝
  * return to
  */
-export function extend(to, _from) {
+export function extend(to: any, _from: any) {
   for (const key in _from) {
     to[key] = _from[key];
   }
@@ -301,7 +285,7 @@ export function extend(to, _from) {
 /**
  * Merge an Array of Objects into a single Object.
  */
-export function toObject(arr) {
+export function toObject(arr: []) {
   const res = {};
   for (let i = 0; i < arr.length; i++) {
     if (arr[i]) {
@@ -317,7 +301,7 @@ export function toObject(arr) {
  * Stubbing args to make Flow happy without leaving useless transpiled code
  * with ...rest (https://flow.org/blog/2017/05/07/Strict-Function-Call-Arity/)
  */
-export function noop() {}
+export function noop(): any {}
 
 /**
  * Always return false.
@@ -325,67 +309,18 @@ export function noop() {}
 export const no = () => false;
 
 /**
- * 返回一个随机数
- * Return same value
- */
-export const identity = _ => _;
-
-/**
- * Check if two values are loosely equal - that is,
- * if they are plain objects, do they have the same shape?
- */
-export function looseEqual(a, b) {
-  if (a === b) return true;
-  const isObjectA = isObject(a);
-  const isObjectB = isObject(b);
-  if (isObjectA && isObjectB) {
-    try {
-      const isArrayA = Array.isArray(a);
-      const isArrayB = Array.isArray(b);
-      if (isArrayA && isArrayB) {
-        return a.length === b.length && a.every((e, i) => looseEqual(e, b[i]));
-      }
-      if (!isArrayA && !isArrayB) {
-        const keysA = Object.keys(a);
-        const keysB = Object.keys(b);
-        return (
-          keysA.length === keysB.length &&
-          keysA.every(key => looseEqual(a[key], b[key]))
-        );
-      }
-      /* istanbul ignore next */
-      return false;
-    } catch (e) {
-      /* istanbul ignore next */
-      return false;
-    }
-  } else if (!isObjectA && !isObjectB) {
-    return String(a) === String(b);
-  } else {
-    return false;
-  }
-}
-
-export function looseIndexOf(arr, val) {
-  for (let i = 0; i < arr.length; i++) {
-    if (looseEqual(arr[i], val)) return i;
-  }
-  return -1;
-}
-
-/**
  * 闭包保证函数只执行一次
  * Ensure a function is called only once.
  */
-export function once(fn) {
-  let called = false;
-  return function() {
-    if (!called) {
-      called = true;
-      fn.apply(this, arguments);
-    }
-  };
-}
+// export function once(fn: () => any) {
+//   let called = false;
+//   return function() {
+//     if (!called) {
+//       called = true;
+//       fn.apply(this, arguments);
+//     }
+//   };
+// }
 
 /**
  * 消抖函数，保证函数在一定时间内只能触发一次，如果这个时间段内再次触发，则重新计算
@@ -393,50 +328,50 @@ export function once(fn) {
  * @param wait 等待时间
  * @param immediate 是否立即执行
  */
-export function debounce(func, wait, immediate) {
-  let timeout;
-
-  return function() {
-    const _this = this;
-
-    if (timeout) clearTimeout(timeout);
-    if (immediate) {
-      const callNow = !timeout;
-      timeout = setTimeout(() => {
-        timeout = null;
-      }, wait);
-      if (callNow) func.apply(_this, arguments);
-    } else {
-      timeout = setTimeout(function() {
-        func.apply(_this, arguments);
-      }, wait);
-    }
-  };
-}
+// export function debounce(func, wait, immediate) {
+//   let timeout;
+//
+//   return function() {
+//     const _this = this;
+//
+//     if (timeout) clearTimeout(timeout);
+//     if (immediate) {
+//       const callNow = !timeout;
+//       timeout = setTimeout(() => {
+//         timeout = null;
+//       }, wait);
+//       if (callNow) func.apply(_this, arguments);
+//     } else {
+//       timeout = setTimeout(function() {
+//         func.apply(_this, arguments);
+//       }, wait);
+//     }
+//   };
+// }
 
 /**
  * 节流函数 规定时间内只能触发一次
  * @param func
  * @param wait 等待时机
  */
-export function throttle(func, wait) {
-  let prevTimestamp = 0;
-  return function() {
-    const _this = this;
-    const now = Date.now();
-    if (now - prevTimestamp > wait) {
-      func.apply(_this, arguments);
-      prevTimestamp = now;
-    }
-  };
-}
+// export function throttle(func, wait) {
+//   let prevTimestamp = 0;
+//   return function() {
+//     const _this = this;
+//     const now = Date.now();
+//     if (now - prevTimestamp > wait) {
+//       func.apply(_this, arguments);
+//       prevTimestamp = now;
+//     }
+//   };
+// }
 
 /**
  * 从父类对象继承
  * @param Parent 父类
  * @param Sub 子类
  */
-export function extendFrom(Parent, Sub) {
+export function extendFrom(Parent: any, Sub: any) {
   Sub.prototype = Object.create(Parent.prototype);
   Sub.prototype.constructor = Sub;
   return Sub;
