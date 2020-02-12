@@ -6,7 +6,29 @@
  * @Last Modifined time : 2020/2/6 16:59
  * @Description JE头文件
  **/
-import { requestConfig } from "@/je/utils/ajax";
 declare namespace JE {
+  type httpRequest =
+    | "OPTIONS"
+    | "GET"
+    | "HEAD"
+    | "POST"
+    | "PUT"
+    | "DELETE"
+    | "TRACE"
+    | "CONNECT"
+    | undefined;
+  interface requestConfig {
+    url: string; // 请求url
+    data?: any; // 数据
+    header?: object; // 请求头
+    method?: httpRequest; //请求类型
+    timeout?: number;
+    dataType?: string;
+    responseType?: string;
+    sslVerify?: boolean;
+    success?: (data: any) => any;
+    fail?: (data: any) => any;
+    complete?: (data: any) => any;
+  }
   function ajax(config: requestConfig): any;
 }
