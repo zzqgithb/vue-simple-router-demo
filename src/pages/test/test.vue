@@ -18,7 +18,7 @@ export default class Test extends Vue {
   created() {
     JE.ajax({
       url: "/je/phone/app/loadApk",
-      data: { apkCode: "2019-0102-1347-8233" }
+      data: { apkCode: "2019-0102-1347-8233" },
     }).then(res => {
       console.log(res);
     });

@@ -6,6 +6,7 @@ je/node_modules/
 ./src/*.js
 ./src/*.js.map
 
+
 # local env files
 .env.local
 .env.*.local
@@ -24,3 +25,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+*src/pagesbf

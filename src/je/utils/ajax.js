@@ -1,6 +1,6 @@
 var JeHttp = /** @class */ (function () {
     function JeHttp() {
-        this.baseUrl = "/api";
+        this.baseUrl = "/api"; //反向代理
         this.defaultParams = {
             url: "",
             method: "POST",
