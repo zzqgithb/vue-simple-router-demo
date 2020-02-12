@@ -30,7 +30,7 @@ export interface requestConfig {
   complete?: (data: any) => any;
 }
 class JeHttp {
-  public baseUrl: string = "/api";
+  public baseUrl: string = "/api";//反向代理
   public header?: object;
   private static instance: JeHttp;
 

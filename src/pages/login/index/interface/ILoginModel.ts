@@ -8,11 +8,11 @@
  **/
 
 export interface ILoginModel {
-  mode: string; // 登录模式 通过chooseLoginMode进行的赋值
+  mode?: string; // 登录模式 通过chooseLoginMode进行的赋值
   // 用户名
-  username: string;
+  username?: string;
   // 密码
-  password: string;
+  password?: string;
   // 平台验证码
   captcha?: string;
   // 第三方平台accessToken

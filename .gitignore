@@ -3,6 +3,9 @@ node_modules/
 unpackage/
 dist/
 je/node_modules/
+./src/*.js
+./src/*.js.map
+
 
 # local env files
 .env.local
@@ -22,3 +25,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+*src/pagesbf
