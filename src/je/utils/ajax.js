@@ -1,8 +1,7 @@
 class JeHttp {
     constructor() {
-        this.baseUrl = "/api";
+        this.baseUrl = "/api"; //反向代理
         this.defaultParams = {
-            url: "",
             method: "POST",
         };
     }
@@ -31,7 +30,7 @@ class JeHttp {
      */
     beforeRequestFilter(config) {
         config.header = {
-            authorization: "ZCuuDCYmCKSkIkzSP9R",
+            authorization: "zbB868rucQbi8mrr8lW",
             "Platform-Agent": "AppleWebKit/537.36 (KHTML, like Gecko)",
             "X-Requested-With": "XMLHttpRequest",
             "Content-Type": config.method === "POST"
@@ -52,7 +51,7 @@ class JeHttp {
                     }
                 }
             }
-            return data.obj;
+            return data;
         }
         return response;
     }
@@ -101,7 +100,7 @@ class JeHttp {
      * 合并请求参数
      */
     mergeConfig(config) {
-        return Object.assign(this.defaultParams, config);
+        return Object.assign(config, this.defaultParams);
     }
     /**
      * 处理请求数据
@@ -110,6 +109,10 @@ class JeHttp {
     transformRequest(req) {
         req.url = this.baseUrl + req.url;
         req = this.mergeConfig(req);
+        // 兼容params参数
+        if (req.params) {
+            req.data = req.params;
+        }
         return req;
     }
     /**

@@ -19,6 +19,7 @@ type httpRequest =
 export interface requestConfig {
   url: string; // 请求url
   data?: any; // 数据
+  params?: any;
   header?: object; // 请求头
   method?: httpRequest; //请求类型
   timeout?: number;
@@ -30,12 +31,11 @@ export interface requestConfig {
   complete?: (data: any) => any;
 }
 class JeHttp {
-  public baseUrl: string = "/api";//反向代理
+  public baseUrl: string = "/api"; //反向代理
   public header?: object;
   private static instance: JeHttp;
 
   private defaultParams: requestConfig = {
-    url: "",
     method: "POST",
   };
 
@@ -68,7 +68,7 @@ class JeHttp {
    */
   private beforeRequestFilter(config: requestConfig): requestConfig {
     config.header = {
-      authorization: "ZCuuDCYmCKSkIkzSP9R",
+      authorization: "zbB868rucQbi8mrr8lW",
       "Platform-Agent": "AppleWebKit/537.36 (KHTML, like Gecko)",
       "X-Requested-With": "XMLHttpRequest",
       "Content-Type":
@@ -91,7 +91,7 @@ class JeHttp {
           }
         }
       }
-      return data.obj;
+      return data;
     }
     return response;
   }
@@ -141,7 +141,7 @@ class JeHttp {
    * 合并请求参数
    */
   private mergeConfig(config: requestConfig) {
-    return Object.assign(this.defaultParams, config);
+    return Object.assign(config, this.defaultParams);
   }
 
   /**
@@ -151,6 +151,10 @@ class JeHttp {
   private transformRequest(req: requestConfig): requestConfig {
     req.url = this.baseUrl + req.url;
     req = this.mergeConfig(req);
+    // 兼容params参数
+    if (req.params) {
+      req.data = req.params;
+    }
     return req;
   }
 

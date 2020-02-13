@@ -31,4 +31,7 @@ declare namespace JE {
     complete?: (data: any) => any;
   }
   function ajax(config: requestConfig): any;
+
+  function setLSItem(key: string, value: any): void;
+  function getLSItem(key: string): any;
 }
