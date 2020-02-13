@@ -6,5 +6,6 @@
  * @Last Modifined time : 2020/2/6 17:01
  * @Description
  **/
+require('./je.min.js')
 import ajax from "@/je/utils/ajax";
 JE.ajax = ajax.request;
