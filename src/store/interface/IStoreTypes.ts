@@ -7,6 +7,8 @@
  * @Description Store全量的接口数据
  **/
 import ITestStore from "@/pages/test/store/interface/ITestStore";
+import IHome from "@/pages/home/store/IHome";
 export default interface IStoreTypes {
   testStore: ITestStore;
+  homeStore: IHome;
 }

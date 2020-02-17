@@ -10,11 +10,12 @@ import Vue from "vue";
 import Vuex, { StoreOptions } from "vuex";
 import IStoreTypes from "@/store/interface/IStoreTypes";
 import testStore from "@/pages/test/store";
-
+import homeStore from "@/pages/home/store";
 Vue.use(Vuex);
 const store: StoreOptions<IStoreTypes> = {
   modules: {
-    testStore
+    testStore,
+    homeStore
   },
 };
 export default new Vuex.Store<IStoreTypes>(store);

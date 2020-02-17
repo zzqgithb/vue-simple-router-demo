@@ -10,10 +10,7 @@ module.exports = {
         "@vue/typescript"
     ],
     "rules": {
-        "semi": [
-            "error",
-            "always"
-        ],
+        "semi": 0,
         "comma-dangle": [
             "error",
             "always-multiline"

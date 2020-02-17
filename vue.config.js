@@ -5,6 +5,8 @@ const dev = process.env.NODE_ENV !== "production";
 const devtool = dev && "cheap-module-eval-source-map";
 const { aliasForVue } = require("./config/alias.config.js");
 const { mergeLessConfig } = require("./config/less.config");
+const TransformPages = require("uni-read-pages");
+const tfPages = new TransformPages();
 
 module.exports = {
   filenameHashing: true,
@@ -26,6 +28,11 @@ module.exports = {
    */
   configureWebpack: {
     devtool,
+    plugins: [
+      new tfPages.webpack.DefinePlugin({
+        ROUTES: JSON.stringify(tfPages.routes)
+      })
+    ]
   },
 
   /**

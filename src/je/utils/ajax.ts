@@ -17,7 +17,7 @@ type httpRequest =
   | "CONNECT"
   | undefined;
 export interface requestConfig {
-  url: string; // 请求url
+  url?: string; // 请求url
   data?: any; // 数据
   params?: any;
   header?: object; // 请求头
